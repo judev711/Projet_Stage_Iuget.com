@@ -39,8 +39,8 @@ const DashboardC = () => {
          </button>
          
          
-        <a href="#" className="flex ms-2 md:me-24">
-          <img src="/src/assets/flowbite.jpg" className="h-8 w-8 me-3 rounded-full" alt="FlowBite Logo" />
+        <a href="https://www.tiktok.com/@theosmith57/video/7414610311086378273?is_from_webapp=1&sender_device=pc" className="flex ms-2 md:me-24  gap-2">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhhhkrDZVCNQn3HT_6UToRIoC_AP4qpufmIA&s" className="w-8 h-8 rounded-full " />
           <span className="self-center text-xl text-white font-extrabold sm:text-2xl whitespace-nowrap text dark:text-white">TheoDev@711</span>
         </a>
         {/* logo */}
