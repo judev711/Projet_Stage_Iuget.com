@@ -1,6 +1,8 @@
 // import React from 'react'
 import { Link } from "react-router-dom"
 import { useState, SetStateAction } from "react"
+import { PiSignOut } from "react-icons/pi"
+import { MdNotifications } from "react-icons/md"
 
 const Dashboard = () => {
   const [Tab, setTab]=useState(1)
@@ -35,9 +37,15 @@ const Dashboard = () => {
           <div className="flex items-center ms-3">
             {/* user profile */}
             <div className="flex items-center gap-10">
-              <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
-               </svg>
+              <Link to="/Login">
+                  <div className="flex items-center gap-2 border p-2 rounded-lg cursor-pointer">
+                     
+                     <PiSignOut className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md:w-8 md:h-8 cursor-pointer  text-white   dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+                     <p className="text-white">Sign Out</p>
+                     
+                  </div>
+               </Link>
+              <MdNotifications className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md:w-8 md:h-8 cursor-pointer  text-white   dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
               <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                 <span className="sr-only">Open user menu</span>
                 <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo"/>

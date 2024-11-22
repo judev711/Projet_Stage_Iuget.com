@@ -8,16 +8,18 @@ import { MdOutlineDateRange } from "react-icons/md";
 import { MdReportGmailerrorred } from "react-icons/md";
 import { MdNotifications } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { PiSignOut } from "react-icons/pi";
 
 const Leaves = () => {
   const [Tab, setTab]=useState(3);
-  
-   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  
+  const [open, setopen]=useState(false)
+const toggle = ()=>{
+   setopen(!open)
+}
 
 //   const [Open, SetOpen]= useState(true)
   const HandlesTab = (Tab: SetStateAction<number>)=>{
@@ -39,51 +41,77 @@ const Leaves = () => {
          </button>
          
          
-        <a href="#" className="flex ms-2 md:me-24">
-          <img src="/src/assets/flowbite.jpg" className="h-8 w-8 me-3 rounded-full" alt="FlowBite Logo" />
+        <a href="https://www.tiktok.com/@theosmith57/video/7414610311086378273?is_from_webapp=1&sender_device=pc" className="flex ms-2 md:me-24  gap-2">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhhhkrDZVCNQn3HT_6UToRIoC_AP4qpufmIA&s" className="w-8 h-8 rounded-full " />
           <span className="self-center text-xl text-white font-extrabold sm:text-2xl whitespace-nowrap text dark:text-white">TheoDev@711</span>
         </a>
         {/* logo */}
       </div>
       {/* end of navbar logo */}
       {/* navbar of profil */}
-      <div className="flex items-center">
-          <div className="flex items-center ms-3">
-            {/* user profile */}
-            <div className="flex items-center gap-10">
-              <MdNotifications className="flex-shrink-0 w-8 h-8 cursor-pointer  text-white   dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-              <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"  >
-                <span className="sr-only">Open user menu</span>
-                <img className="w-12 h-12 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo"/>
-              </button>
-            </div>
-            {/* user profil */}
-            <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" >
-              <div className="px-4 py-3" >
-                <p className="text-sm text-gray-900 dark:text-white" >
-                  Neil Sims
-                </p>
-                <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300" >
-                  neil.sims@flowbite.com
-                </p>
+ <div className="flex items-center">
+        <div className="flex items-center ms-3">
+          {/* user profile */}
+          <div className="flex items-center gap-10 max-md:gap-2">
+            <Link to="/Login">
+              <div className="flex items-center gap-2 border p-2 rounded-lg cursor-pointer">
+                <PiSignOut className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md:w-8 md:h-8 text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+                <p className="text-white text-nowrap">Sign Out</p>
               </div>
-              <ul className="py-1" >
-                <li>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" >Dashboard</a>
-                </li>
-                <li>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" >Settings</a>
-                </li>
-                <li>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" >Earnings</a>
-                </li>
-                <li>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" >Sign out</a>
-                </li>
-              </ul>
-            </div>
+            </Link>
+            <MdNotifications className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md:w-8 md:h-8 text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+            <button
+              type="button"
+              className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              onClick={toggle}
+            >
+              <img
+                className="md:w-12 md:h-12 max-sm:w-5 max-sm:h-5 rounded-full cursor-pointer"
+                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                alt="user photo"
+              />
+            </button>
+          </div>
+          {/* user profil */}
+          <div
+            className={`z-50 absolute right-0 mt-52 mx-2  py-2 w-54 bg-white rounded-md shadow-lg dark:bg-gray-700 ${
+              open ? 'block' : 'hidden'
+            }`}
+          >
+            <ul className="divide-y divide-gray-100 dark:divide-gray-600">
+              <li>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  <p>Theo@711</p>
+                  <p>theodore@gmail.com</p>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:text-green-600 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                 Profile
+                </a>
+              </li>
+             
+              <li>
+               <Link to="/Login">
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:text-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Sign out
+                </a>
+               </Link>
+              </li>
+            </ul>
           </div>
         </div>
+      </div>
+  
     </div>
   </div>
 </nav>
@@ -256,4 +284,4 @@ const Leaves = () => {
   )
 }
 
-export default Leaves;
+export default Leaves
