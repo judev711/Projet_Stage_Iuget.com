@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className=" h-screen justify-center items-center flex bg-gray-200 ">
-      <div className="flex w-full p-5">
+    <div className="justify-center items-center flex bg-slate-100 px-6 py-8 mx-auto md:h-screen ">
+      <div className="flex w-full ">
         {/* section connection  */}
         <div className="bg-white w-full    ">
           <div className="p-8">
@@ -65,7 +65,7 @@ const Login = () => {
                   </div>
                   {/* remember me */}
                   <div className="mb-3 flex flex-row items-center justify-between">
-                    <div className="gap-3 flex text-nowrap">
+                    <div className="gap-1 flex text-nowrap items-center  ">
                       <input type="checkbox" className="" />
                       <label className="text-gray-500">Remember me</label>
                     </div>
