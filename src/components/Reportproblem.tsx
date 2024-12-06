@@ -25,6 +25,10 @@ const toggle = ()=>{
   const HandlesTab = (Tab: SetStateAction<number>)=>{
  setTab(Tab)
   }
+  const  [open2, setopen2] = useState(true);
+const toggle2 = ()=>{
+   setopen2(!open2)
+}
 
   return ( <>
   
@@ -32,18 +36,18 @@ const toggle = ()=>{
   <div className="px-3 py-3 lg:px-5 lg:pl-3 ">
     <div className="flex items-center justify-between">
       {/* navbar logo */}
-      <div className="flex items-center justify-start rtl:justify-end">
+      <div  className="flex items-center justify-start rtl:justify-end " onClick={toggle2}>
         
         {/* burger */}
-        <button onClick={toggleSidebar}  type="button" className="inline-flex items-center p-2 text-sm text-white rounded-lg font-bold focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" >
-               <RxHamburgerMenu className={`w-6 h-6`} />
+        <button onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white rounded-lg font-bold focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" >
+               <RxHamburgerMenu className={`w-6 h-6 `} />
             {/* burger */}
          </button>
          
          
         <a href="https://www.tiktok.com/@theosmith57/video/7414610311086378273?is_from_webapp=1&sender_device=pc" className="flex ms-2 md:me-24  gap-2">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhhhkrDZVCNQn3HT_6UToRIoC_AP4qpufmIA&s" className="w-8 h-8 rounded-full " />
-          <span className="self-center text-xl text-white font-extrabold sm:text-2xl whitespace-nowrap text dark:text-white">TheoDev@711</span>
+          <span className="self-center text-xl text-white font-extrabold sm:text-2xl whitespace-nowrap text dark:text-white">Theo</span>
         </a>
         {/* logo */}
       </div>
@@ -52,21 +56,23 @@ const toggle = ()=>{
  <div className="flex items-center">
         <div className="flex items-center ms-3">
           {/* user profile */}
-          <div className="flex items-center gap-10 max-md:gap-2">
+          <div className="flex items-center gap-5 max-md:gap-2">
             <Link to="/Login">
-              <div className="flex items-center gap-2 border p-2 rounded-lg cursor-pointer">
-                <PiSignOut className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md:w-8 md:h-8 text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-                <p className="text-white text-nowrap">Sign Out</p>
+            <div className="group">
+              <div className="flex items-center gap-2 group-hover:bg-white border  p-2 rounded-lg cursor-pointer">
+                <PiSignOut className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md: group-hover:text-black  text-white dark:text-gray-400  dark:group-hover:text-white" />
+                <p className="text-white text-sm group-hover:text-black text-nowrap">Sign Out</p>
               </div>
+            </div>  
             </Link>
-            <MdNotifications className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md:w-8 md:h-8 text-white dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+            <MdNotifications className="flex-shrink-0 max-sm:w-5 max-sm:h-5 w-7 h-7 text-white cursor-pointer dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
             <button
               type="button"
               className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               onClick={toggle}
             >
               <img
-                className="md:w-12 md:h-12 max-sm:w-5 max-sm:h-5 rounded-full cursor-pointer"
+                className=" md:w-8 md:h-8 max-lg:w-8 max-lg:h-8  max-sm:w-8 max-sm:h-8 rounded-full cursor-pointer"
                 src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                 alt="user photo"
               />
@@ -116,15 +122,15 @@ const toggle = ()=>{
   </div>
 </nav>
 {/* start sidebar */}
-<aside  className={`fixed top-0 left-0 z-40  h-screen  pt-20 ${isSidebarOpen ? 'w-56':'w-[3,75rem] p-4'} transition-all duration-700   bg-violet-100 border-r border-gray-200  dark:bg-gray-800 dark:border-gray-700`} >
-   <div  className={`h-full px-3 pb-4 overflow-y-auto  dark:bg-gray-800   `}>
-      <ul className="space-y-2 font-medium">
+<aside  className={`fixed  top-0 left-0 z-40  h-screen  pt-20  ${!isSidebarOpen ?'w-16':'w-56'}    bg-violet-100 border-r border-gray-200 transition-all duration-700  dark:bg-gray-800 dark:border-gray-700`} >
+   <div  className={`h-full  px-[0.80rem] pb-4 overflow-y-auto  dark:bg-gray-800   `}>
+      <ul className={`space-y-3 font-medium     ` }>
         {/* icon Dashboard */}
-         <li className="">
+         <li className="hover:bg-red-200 w-[2rem]">
           <Link to='/employee/dashboard'>
-            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-               <BiHome className="flex-shrink-0 w-5 h-5  text-gray-500   dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
-               <span  onClick={()=>HandlesTab(1)} className={`${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-900'} ms-3 ${!isSidebarOpen&&'hidden '} `}>Dashboard</span>
+            <a href="#" className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white  hover:bg-gray-100 dark:hover:bg-gray-700 group ">
+               <BiHome className="flex-shrink-0 w-5 h-5  text-gray-500    dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white   "/>
+               <span  onClick={()=>HandlesTab(1)} className={`${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-900'} ms-3 ${!open2 && 'hidden'}  `} > Dashboard</span>
             </a>
             </Link>
          </li>
@@ -135,7 +141,7 @@ const toggle = ()=>{
                
                <FiUser className="flex-shrink-0 w-5 h-5 text-gray-500  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                   
-               <span onClick={()=>HandlesTab(2)} className={`${Tab===2 ? 'text-blue-600 font-bold':'text-gray-900'} ms-3 whitespace-nowrap ${!isSidebarOpen&&'hidden '}`} >Profile</span>
+               <span onClick={()=>HandlesTab(2)} className={`${Tab===2 ? 'text-blue-600 font-bold':'text-gray-900'} ms-3 whitespace-nowrap ${!open2 && 'hidden'} `} >Profile</span>
                
             </a>
             </Link>
@@ -146,7 +152,7 @@ const toggle = ()=>{
           <Link to='/Leaves' >
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <MdOutlineDateRange className="flex-shrink-0 w-5 h-5 text-gray-500  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-               <span  onClick={()=>HandlesTab(3)} className={`${Tab===3 ? 'text-blue-600 font-bold':'text-gray-900'}flex-1 ms-3 whitespace-nowrap ${!isSidebarOpen&&'hidden '} `}>Leave Applications</span>
+               <span  onClick={()=>HandlesTab(3)} className={`${Tab===3 ? 'text-blue-600 font-bold':'text-gray-900'}flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Leave Applications</span>
             </a>
             </Link>
          {/* Leaves Applications */}
@@ -157,7 +163,7 @@ const toggle = ()=>{
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                
                <IoNotificationsOutline  className="flex-shrink-0 w-5 h-5 text-gray-500  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
-               <span  onClick={()=>HandlesTab(4)} className={`${Tab===4 ? 'text-blue-600 font-bold':'text-gray-900'}flex-1 ms-3 whitespace-nowrap ${!isSidebarOpen&&'hidden '}`}>Notifications</span>
+               <span  onClick={()=>HandlesTab(4)} className={`${Tab===4 ? 'text-blue-600 font-bold':'text-gray-900'}flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Notifications</span>
             </a>
             {/* Notifications */}
             </Link>
@@ -168,7 +174,7 @@ const toggle = ()=>{
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                
                <MdReportGmailerrorred className="flex-shrink-0 w-5 h-5 text-gray-500  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
-               <span  onClick={()=>HandlesTab(5)} className={`${Tab===5 ? 'text-blue-600 font-bold': 'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!isSidebarOpen&&'hidden '} `}>Report a Problem</span>
+               <span  onClick={()=>HandlesTab(5)} className={`${Tab===5 ? 'text-blue-600 font-bold': 'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden duration-500'} `}>Report a Problem</span>
             </a>
             </Link>
             {/*reportproblems  */}
