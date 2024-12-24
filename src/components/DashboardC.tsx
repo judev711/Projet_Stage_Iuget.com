@@ -144,7 +144,7 @@ const formatdate = today.toLocaleDateString("en-Us",{
    <div  className={`h-full  px-[0.80rem] pb-4 overflow-y-auto  dark:bg-gray-800   `}>
       <ul className={`space-y-3 font-medium     ` }>
         {/* icon Dashboard */}
-         <li className="hover:bg-red-200 w-[2rem]">
+         <li className="">
           <Link to='/employee/dashboard'>
             <a href="#" className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white  hover:bg-gray-100 dark:hover:bg-gray-700 group ">
                <BiHome className="flex-shrink-0 w-5 h-5  text-gray-500    dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white   "/>
@@ -170,7 +170,7 @@ const formatdate = today.toLocaleDateString("en-Us",{
           <Link to='/Leaves' >
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <MdOutlineDateRange className="flex-shrink-0 w-5 h-5 text-gray-500  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-               <span  onClick={()=>HandlesTab(3)} className={`${Tab===3 ? 'text-blue-600 font-bold':'text-gray-900'}flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Leave Applications</span>
+               <span  onClick={()=>HandlesTab(3)} className={`${Tab===3 ? 'text-blue-600 font-bold':'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Leave Applications</span>
             </a>
             </Link>
          {/* Leaves Applications */}
@@ -181,7 +181,7 @@ const formatdate = today.toLocaleDateString("en-Us",{
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                
                <IoNotificationsOutline  className="flex-shrink-0 w-5 h-5 text-gray-500  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
-               <span  onClick={()=>HandlesTab(4)} className={`${Tab===4 ? 'text-blue-600 font-bold':'text-gray-900'}flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Notifications</span>
+               <span  onClick={()=>HandlesTab(4)} className={`${Tab===4 ? 'text-blue-600 font-bold':'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Notifications</span>
             </a>
             {/* Notifications */}
             </Link>
@@ -219,21 +219,21 @@ const formatdate = today.toLocaleDateString("en-Us",{
             <hr className="border-t-2  border-black mx-3"/>
             {/* les trois grids */}
             <div className="grid grid-cols-3 gap-4 mb-4 bg-slate-300 mt-3 p-3 ">
-               <div className="flex items-center justify-center rounded bg-green-400 h-36  dark:bg-gray-800  text-white  duration-300 cursor-pointer hover:scale-[1.05]">
+               <div className="flex items-center justify-center rounded bg-green-400 h-36  dark:bg-gray-800  text-white  duration-300 cursor-pointer hover:scale-[1.05] lg:hover:scale-[1.02]">
                  <div className="flex flex-col items-center justify-center gap-2 ">
                      <FaSignOutAlt className="lg:text-3xl md:text-xl max-md:text-sm" />
                      <p className="text-xl max-sm:text-sm">{hours}</p>
                      <p className="text-xl max-md:text-sm max-sm:text-xs">Not Tracked</p>
                  </div>
                </div>
-               <div className="flex items-center justify-center rounded bg-blue-400 h-36  dark:bg-gray-800  text-white  duration-300 cursor-pointer hover:scale-[1.05]">
+               <div className="flex items-center justify-center rounded bg-blue-400 h-36  dark:bg-gray-800  text-white  duration-300 cursor-pointer hover:scale-[1.05] lg:hover:scale-[1.02]">
                  <div className="flex flex-col items-center justify-center gap-2 ">
                      <LuCoffee  className="lg:text-3xl md:text-xl max-md:text-sm" />
                      <p className="text-xl max-sm:text-sm">{hours}</p>
                      <p className="text-xl max-md:text-sm">Break</p>
                  </div>
                </div>
-               <div className="flex items-center justify-center rounded bg-pink-400 h-36  dark:bg-gray-800  text-white  duration-300 cursor-pointer hover:scale-[1.05]">
+               <div className="flex items-center justify-center rounded bg-pink-400 h-36  dark:bg-gray-800  text-white  duration-300 cursor-pointer hover:scale-[1.05] lg:hover:scale-[1.02]">
                  <div className="flex items-center flex-col   gap-2 ">
                      <MdAccessTime className="lg:text-3xl md:text-xl max-md:text-sm tex" />
                      <p className="text-xl  max-sm:text-xs">{hours}</p>
@@ -247,9 +247,136 @@ const formatdate = today.toLocaleDateString("en-Us",{
       {/* fin des rois premiers grids */}
       
   
-      <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-        
+      <div className="grid grid-cols-2 items-center justify-center gap-2 p-3 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+        <div className="">
+          
+<div className="max-w-sm w-full bg-black rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+  <div className="flex justify-between">
+    <div>
+      <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">32.4k</h5>
+      <p className="text-base font-normal text-gray-500 dark:text-gray-400">Users this week</p>
+    </div>
+    <div
+      className="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+      12%
+      <svg className="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
+      </svg>
+    </div>
+  </div>
+  <div id="area-chart"></div>
+  <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+    <div className="flex justify-between items-center pt-5">
+      {/* <!-- Button --> */}
+      <button
+        id="dropdownDefaultButton"
+        data-dropdown-toggle="lastDaysdropdown"
+        data-dropdown-placement="bottom"
+        className="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
+        type="button">
+        Last 7 days
+        <svg className="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+      </button>
+      {/* <!-- Dropdown menu --> */}
+      <div id="lastDaysdropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 7 days</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 30 days</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 90 days</a>
+            </li>
+          </ul>
+      </div>
+      <a
+        href="#"
+        className="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
+        Users Report
+        <svg className="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
 
+        </div>
+        
+          
+<div className="max-w-sm w-full h-48 bg-black rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+  <div className="flex justify-between mb-5">
+    <div>
+      <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">$12,423</h5>
+      <p className="text-base font-normal text-gray-500 dark:text-gray-400">Sales this week</p>
+    </div>
+    <div
+      className="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+      23%
+      <svg className="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
+      </svg>
+    </div>
+  </div>
+  <div id="grid-chart"></div>
+  <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between mt-5">
+    <div className="flex justify-between items-center pt-5">
+      {/* <!-- Button --> */}
+      <button
+        id="dropdownDefaultButton"
+        data-dropdown-toggle="lastDaysdropdown"
+        data-dropdown-placement="bottom"
+        className="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
+        type="button">
+        Last 7 days
+        <svg className="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+      </button>
+      {/* <!-- Dropdown menu --> */}
+      <div id="lastDaysdropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 7 days</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 30 days</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 90 days</a>
+            </li>
+          </ul>
+      </div>
+      <a
+        href="#"
+        className="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
+        Sales Report
+        <svg className="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+        
+            
       </div>
       <div className="grid grid-cols-2 gap-4">
          <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">

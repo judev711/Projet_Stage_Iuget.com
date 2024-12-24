@@ -7,7 +7,11 @@ export const content = [
   _content(), // Appel de la fonction flowbite.content()
 ];
 export const theme = {
-  extend: {},
+  extend: {
+    fontFamily:{
+      'poppins':['Poppins', 'sans-serif'],
+    }
+  },
 };
 export const plugins = [
   plugin(), // Ajout du plugin Flowbite

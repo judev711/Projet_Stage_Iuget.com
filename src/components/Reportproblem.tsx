@@ -126,7 +126,7 @@ const toggle2 = ()=>{
    <div  className={`h-full  px-[0.80rem] pb-4 overflow-y-auto  dark:bg-gray-800   `}>
       <ul className={`space-y-3 font-medium     ` }>
         {/* icon Dashboard */}
-         <li className="hover:bg-red-200 w-[2rem]">
+         <li className="">
           <Link to='/employee/dashboard'>
             <a href="#" className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white  hover:bg-gray-100 dark:hover:bg-gray-700 group ">
                <BiHome className="flex-shrink-0 w-5 h-5  text-gray-500    dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white   "/>
@@ -183,7 +183,7 @@ const toggle2 = ()=>{
    </div>
 </aside>
 {/* End sidebar */}
-<div className="p-4 ml-20 mt-5  ">
+<div className="p-4 ml-14 mt-5  ">
    <div  className={`p-4 border-2 bg-blue-100 ${isSidebarOpen ? 'translate-x-0':'14'} transition-transform  border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-10`}>
       <div className="grid grid-cols-3 gap-4 mb-4">
         {/* les trois premiers grid (1re colone) */}
