@@ -44,7 +44,7 @@ const toggle2 = ()=>{
   return ( <>
   
 <nav className="fixed top-0 z-50 w-full bg-[#7e22ce]  border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-  <div className="px-3 py-3 lg:px-5 lg:pl-3 bg-white/50 ">
+  <div className="px-3 py-3 lg:px-5 lg:pl-3 slate-200 ">
     <div className="flex items-center justify-between">
       {/* navbar logo */}
       <div  className="flex items-center justify-start rtl:justify-end " onClick={toggle2}>
@@ -338,8 +338,8 @@ const toggle2 = ()=>{
                 </div>
                 <div className="flex flex-col  p-3">
                   <div className="mb-4">
-                     <div className="rounded-full p-2 bg-gray-200 flex items-center px-3">
-                        <p className="text-green-500 text-xs font-extrabold">On Time</p>
+                     <div className="rounded-full p-2 bg-gray-200 flex items-center justify-center ">
+                        <p className="text-green-300 text-xs font-extrabold">On Time</p>
                      </div>
                   </div>
                   <div className="flex flex-col gap-1  text-sm">

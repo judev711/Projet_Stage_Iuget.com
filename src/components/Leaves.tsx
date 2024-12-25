@@ -9,6 +9,12 @@ import { MdReportGmailerrorred } from "react-icons/md";
 import { MdNotifications } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { PiSignOut } from "react-icons/pi";
+import { MdModeEditOutline } from "react-icons/md";
+import { IoMenu } from "react-icons/io5";
+import { GrAppsRounded } from "react-icons/gr";
+import { FiFilter } from "react-icons/fi";
+import { FaSort } from "react-icons/fa";
+import { TbClockHour4 } from "react-icons/tb";
 
 const Leaves = () => {
   const [Tab, setTab]=useState(3);
@@ -184,104 +190,143 @@ const toggle2 = ()=>{
 {/* End sidebar */}
 <div className="p-4 ml-14 mt-5  ">
    <div  className={`p-4 border-2 bg-blue-100 ${isSidebarOpen ? 'translate-x-0':'14'} transition-transform  border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-10`}>
-      <div className="grid grid-cols-3 gap-4 mb-4">
-        {/* les trois premiers grid (1re colone) */}
-         <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+      
+        {/*  Leaves */}
+         <div className="flex items-center p-3 h-20 rounded bg-gray-50 dark:bg-gray-800 mb-4 font-poppins">
+            <div className="flex items-center justify-between  bg-gray-50 dark:bg-gray-800 w-full">
+               <div className="flex flex-row gap-2">
+                  <div className="h-[30px] bg-violet-700 w-2 rounded-lg"></div>
+                  <p className="text-xl text-black dark:text-gray-500">Leaves</p>
+               </div>
+               <div className="flex items-center gap-2 bg-violet-700 p-2 px-4 rounded-lg cursor-pointer">
+                  <MdModeEditOutline className="text-white text-2xl "/>
+                  <p className="text-[15px] text-white dark:text-gray-500">Leave Request</p>
+               </div>
+            </div>
+            
          </div>
-         <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+           {/* Leaves History */}
+      <div className="flex flex-col  mb-4  rounded bg-gray-50 dark:bg-gray-800">
+         <div className="flex   justify-between p-3  rounded  dark:bg-gray-800 w-full mb-4">
+            <div className="flex  gap-2">
+               <div className=" flex items-center h-[30px] w-2 rounded-lg bg-violet-700 p-1"></div>
+               <p className="font-poppins text-xl text-black dark:text-gray-500">Leaves History</p>
+            </div>
+            <div className="flex flex-row gap-2 max-sm:hidden  ">
+               <div className="bg-violet-700 p-1 rounded-lg h-[32px]">
+                  <GrAppsRounded className="font-poppins text-white text-2xl"/>
+               </div>
+               <div className="bg-black p-1 rounded-lg h-[32px]">
+                  <IoMenu className="font-poppins text-white text-2xl"/>
+               </div>
+               <div className="bg-black p-3 rounded-lg flex items-center h-[32px]  text-white   font-poppins gap-1">
+                  <FiFilter/>
+                  <p>Filter</p>
+               </div>
+               <div className="bg-black p-3  rounded-lg flex items-center h-[32px]  text-white font-poppins gap-1">
+                  <FaSort />
+                  <p>Sort</p>
+               </div>
+            </div>
+            
          </div>
-         <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
+         {/* ici */}
+           <div className="grid grid-cols-4 gap-4 p-3 -mt-4 mb-6 max-sm:grid-cols-1 md:grid-cols-1 max-md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4   ">
+               <div className="flex justify-between   rounded-md bg-slate-300 font-poppins ">
+                  <div className="flex flex-col  p-3">
+                     <div className="flex items-center gap-2 mb-5">
+                        <TbClockHour4 className="font-poppins"/>
+                        <p className="font-semibold ">Dec 25, 2024</p>
+                     </div>
+                     <div className="flex flex-col gap-1 text-sm">
+                        <p className="text-gray-500">From Date</p>
+                        <p className="font-bold">Jan 01, 2025</p>
+                     </div>
+                  </div>
+                  <div className="flex flex-col  p-3 ">
+                     <div className="mb-4">
+                        <div className="rounded-full p-2 bg-green-100 flex items-center justify-center ">
+                           <p className="text-green-400 text-xs font-extrabold">Approved</p>
+                        </div>
+                     </div>
+                     <div className="flex flex-col gap-1  text-sm">
+                        <p className="text-gray-500">To Date</p>
+                        <p className="font-bold">Jan 13, 2025</p>
+                     </div>
+                  </div>
+               </div>
+          <div className="flex justify-between   rounded-md bg-slate-300 font-poppins ">
+                  <div className="flex flex-col  p-3">
+                     <div className="flex items-center gap-2 mb-5">
+                        <TbClockHour4 className="font-poppins"/>
+                        <p className="font-semibold ">Dec 25, 2024</p>
+                     </div>
+                     <div className="flex flex-col gap-1 text-sm">
+                        <p className="text-gray-500">From Date</p>
+                        <p className="font-bold">Jan 20, 2025</p>
+                     </div>
+                  </div>
+                  <div className="flex flex-col  p-3">
+                     <div className="mb-4">
+                        <div className="rounded-full p-2 bg-yellow-100 flex items-center justify-center ">
+                           <p className="text-yellow-300 text-xs font-extrabold">Pending</p>
+                        </div>
+                     </div>
+                     <div className="flex flex-col gap-1  text-sm">
+                        <p className="text-gray-500">To Date</p>
+                        <p className="font-bold">Jan 25, 2025</p>
+                     </div>
+                  </div>
+               </div>
+          <div className="flex justify-between   rounded-md bg-slate-300 font-poppins ">
+                  <div className="flex flex-col  p-3">
+                     <div className="flex items-center gap-2 mb-5">
+                        <TbClockHour4 className="font-poppins"/>
+                        <p className="font-semibold ">Dec 25, 2024</p>
+                     </div>
+                     <div className="flex flex-col gap-1 text-sm">
+                        <p className="text-gray-500">From Date</p>
+                        <p className="font-bold">Jan 08, 2025</p>
+                     </div>
+                  </div>
+                  <div className="flex flex-col  p-3">
+                     <div className="mb-4">
+                        <div className="rounded-full p-2 bg-red-100 flex items-center justify-center ">
+                           <p className="text-red-500 text-xs font-extrabold">Rejected</p>
+                        </div>
+                     </div>
+                     <div className="flex flex-col gap-1  text-sm">
+                        <p className="text-gray-500">To Date</p>
+                        <p className="font-bold">Jan 19, 2025</p>
+                     </div>
+                  </div>
+               </div>
+          <div className="flex justify-between   rounded-md bg-slate-300 font-poppins ">
+                  <div className="flex flex-col  p-3">
+                     <div className="flex items-center gap-2 mb-5">
+                        <TbClockHour4 className="font-poppins"/>
+                        <p className="font-semibold ">Dec 25, 2024</p>
+                     </div>
+                     <div className="flex flex-col gap-1 text-sm">
+                        <p className="text-gray-500">From Date</p>
+                        <p className="font-bold">Jan 04, 2025</p>
+                     </div>
+                  </div>
+                  <div className="flex flex-col  p-3">
+                     <div className="mb-4">
+                        <div className="rounded-full p-2 bg-green-100 flex items-center justify-center ">
+                           <p className="text-green-400 text-xs font-extrabold">Approved</p>
+                        </div>
+                     </div>
+                     <div className="flex flex-col gap-1  text-sm">
+                        <p className="text-gray-500">To Date</p>
+                        <p className="font-bold">Jan 8, 2025</p>
+                     </div>
+                  </div>
+               </div>
       </div>
-      <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <p className="text-2xl text-gray-400 dark:text-gray-500">
-            <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-            </svg>
-         </p>
       </div>
-      <div className="grid grid-cols-2 gap-4 mb-4">
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-      </div>
-      <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <p className="text-2xl text-gray-400 dark:text-gray-500">
-            <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-            </svg>
-         </p>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-      </div>
+    
    </div>
 </div>
 
