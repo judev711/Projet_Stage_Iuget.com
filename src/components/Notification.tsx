@@ -11,6 +11,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { PiSignOut } from "react-icons/pi";
 import { MdOutlineSecurity } from "react-icons/md";
 import { MdDangerous } from "react-icons/md";
+import { TbAlertTriangle } from "react-icons/tb";
 
 const Notifications = () => {
   const [Tab, setTab]=useState(4);
@@ -48,14 +49,13 @@ const toggle2 = ()=>{
       <div  className="flex items-center justify-start rtl:justify-end " onClick={toggle2}>
         
         {/* burger */}
-        <button onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white rounded-lg font-bold focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" >
-               <RxHamburgerMenu className={`w-6 h-6 `} />
+        <button onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white  font-bold  dark:text-gray-400 dark:hover:bg-gray-700 " >
+               <RxHamburgerMenu className={`w-5 h-5 `} />
             {/* burger */}
          </button>
          
          
-        <a href="https://www.tiktok.com/@theosmith57/video/7414610311086378273?is_from_webapp=1&sender_device=pc" className="flex ms-2 md:me-24  gap-2">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhhhkrDZVCNQn3HT_6UToRIoC_AP4qpufmIA&s" className="w-8 h-8 rounded-full " />
+        <a href="" className="flex ms-2 md:me-24  gap-2">
           <span className="self-center text-xl text-white font-extrabold sm:text-2xl whitespace-nowrap text dark:text-white">Theo</span>
         </a>
         {/* logo */}
@@ -203,7 +203,8 @@ const toggle2 = ()=>{
                      Alerts
                   </p>
                </div>
-               <div className="bg-violet-700 text-white rounded-lg p-3">
+               <div className="bg-violet-700 flex items-center gap-1 text-white rounded-lg p-2 text-sm">
+                  <MdOutlineDateRange/>
                   <p>{FormatDate}</p>
                </div>
             </div>
@@ -211,10 +212,10 @@ const toggle2 = ()=>{
       <div className="grid grid-cols-1 gap-4 mb-4 font-poppins">
          <div className="flex p-6 rounded bg-[#F0FDF4] h-20 dark:bg-gray-800 border-[1px] border-gray-300">
             <div className="flex flex-row items-center gap-2">
-               <div className="bg-green-400 text-white p-3 rounded-full"><MdOutlineSecurity/></div>
+               <div className="bg-green-400 text-white p-2 rounded-full"><MdOutlineSecurity/></div>
                <div className="flex flex-col  gap-1">
                   <p className="text-sm text-black dark:text-gray-500 font-semibold">
-                     Urgent: Action Required
+                     Urgent : Action Required
                   </p>
                   <p className="text-xs text-gray-600 dark:text-gray-500">
                      Please update your account information immediately.
@@ -224,7 +225,7 @@ const toggle2 = ()=>{
          </div>
          <div className="flex p-6 rounded bg-[#F0FDF4] h-20 dark:bg-gray-800 border-[1px] border-gray-300">
             <div className="flex flex-row items-center gap-2">
-               <div className="bg-violet-500 text-white p-3 rounded-full"><MdReportGmailerrorred/></div>
+               <div className="bg-violet-500 text-white p-2 rounded-full"><MdReportGmailerrorred/></div>
                <div className="flex flex-col  gap-1">
                   <p className="text-sm text-black dark:text-gray-500 font-semibold">
                      Server Maintenance
@@ -237,7 +238,7 @@ const toggle2 = ()=>{
          </div>
          <div className="flex p-6 rounded bg-red-100 h-20 dark:bg-gray-800 border-[1px] border-gray-300">
             <div className="flex flex-row items-center gap-2">
-               <div className="bg-red-600 text-white p-3 rounded-full"><MdDangerous/></div>
+               <div className="bg-red-600 text-white p-2 rounded-full"><MdDangerous/></div>
                <div className="flex flex-col  gap-1">
                   <p className="text-sm text-black dark:text-gray-500 font-semibold">
                      Critical Security Alert
@@ -248,35 +249,35 @@ const toggle2 = ()=>{
                </div>
             </div>
          </div>
-         <div className="flex p-6 rounded bg-[#F0FDF4] h-20 dark:bg-gray-800 border-[1px] border-gray-300">
+         <div className="flex p-6 rounded bg-red-100 h-20 dark:bg-gray-800 border-[1px] border-gray-300">
             <div className="flex flex-row items-center gap-2">
-               <div className="bg-green-400 text-white p-3 rounded-full"><MdOutlineSecurity/></div>
+               <div className="bg-orange-400 text-white p-2 rounded-full"><TbAlertTriangle/></div>
                <div className="flex flex-col  gap-1">
                   <p className="text-sm text-black dark:text-gray-500 font-semibold">
-                     Meeting Reminder
+                     Weather Advisory
                   </p>
                   <p className="text-xs text-gray-600 dark:text-gray-500">
-                     Don't forget the team meeting at 10 AM today.
+                     Heavy rain expected in the afternoon. Stay indoors if possible.
                   </p>
                </div>
             </div>
          </div>
          <div className="flex p-6 rounded bg-[#F0FDF4] h-20 dark:bg-gray-800 border-[1px] border-gray-300">
             <div className="flex flex-row items-center gap-2">
-               <div className="bg-green-400 text-white p-3 rounded-full"><MdOutlineSecurity/></div>
+               <div className="bg-violet-500 text-white p-2 rounded-full"><MdReportGmailerrorred/></div>
                <div className="flex flex-col  gap-1">
                   <p className="text-sm text-black dark:text-gray-500 font-semibold">
-                     Meeting Reminder
+                     Holiday Schedule
                   </p>
                   <p className="text-xs text-gray-600 dark:text-gray-500">
-                     Don't forget the team meeting at 10 AM today.
+                     Company holiday scheduled for next Monday. Office will be closed.
                   </p>
                </div>
             </div>
          </div>
          <div className="flex p-6 rounded bg-[#F0FDF4] h-20 dark:bg-gray-800 border-[1px] border-gray-300">
             <div className="flex flex-row items-center gap-2">
-               <div className="bg-green-400 text-white p-3 rounded-full"><MdOutlineSecurity/></div>
+               <div className="bg-green-400 text-white p-2 rounded-full"><MdOutlineSecurity/></div>
                <div className="flex flex-col  gap-1">
                   <p className="text-sm text-black dark:text-gray-500 font-semibold">
                      Meeting Reminder

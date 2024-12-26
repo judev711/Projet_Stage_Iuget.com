@@ -50,14 +50,13 @@ const toggle2 = ()=>{
       <div  className="flex items-center justify-start rtl:justify-end " onClick={toggle2}>
         
         {/* burger */}
-        <button onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white rounded-lg font-bold focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" >
-               <RxHamburgerMenu className={`w-6 h-6 `} />
+        <button onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white  font-bold  dark:text-gray-400 dark:hover:bg-gray-700 " >
+               <RxHamburgerMenu className={`w-5 h-5 `} />
             {/* burger */}
          </button>
          
          
-        <a href="https://www.tiktok.com/@theosmith57/video/7414610311086378273?is_from_webapp=1&sender_device=pc" className="flex ms-2 md:me-24  gap-2">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhhhkrDZVCNQn3HT_6UToRIoC_AP4qpufmIA&s" className="w-8 h-8 rounded-full " />
+        <a href="" className="flex ms-2 md:me-24  gap-2">
           <span className="self-center text-xl text-white font-extrabold sm:text-2xl whitespace-nowrap text dark:text-white">Theo</span>
         </a>
         {/* logo */}

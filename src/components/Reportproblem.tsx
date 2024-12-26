@@ -9,7 +9,8 @@ import { MdReportGmailerrorred } from "react-icons/md";
 import { MdNotifications } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { PiSignOut } from "react-icons/pi";
-
+import { MdDangerous } from "react-icons/md";
+import { GoCheck } from "react-icons/go";
 const Reportproblem = () => {
   const [Tab, setTab]=useState(5);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -39,14 +40,14 @@ const toggle2 = ()=>{
       <div  className="flex items-center justify-start rtl:justify-end " onClick={toggle2}>
         
         {/* burger */}
-        <button onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white rounded-lg font-bold focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" >
-               <RxHamburgerMenu className={`w-6 h-6 `} />
+        <button onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white  font-bold dark:text-gray-400 dark:hover:bg-gray-700 " >
+               <RxHamburgerMenu className={`w-5 h-5 `} />
             {/* burger */}
          </button>
          
          
-        <a href="https://www.tiktok.com/@theosmith57/video/7414610311086378273?is_from_webapp=1&sender_device=pc" className="flex ms-2 md:me-24  gap-2">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhhhkrDZVCNQn3HT_6UToRIoC_AP4qpufmIA&s" className="w-8 h-8 rounded-full " />
+        <a href="" className="flex ms-2 md:me-24  gap-2">
+          
           <span className="self-center text-xl text-white font-extrabold sm:text-2xl whitespace-nowrap text dark:text-white">Theo</span>
         </a>
         {/* logo */}
@@ -71,11 +72,7 @@ const toggle2 = ()=>{
               className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               onClick={toggle}
             >
-              <img
-                className=" md:w-8 md:h-8 max-lg:w-8 max-lg:h-8  max-sm:w-8 max-sm:h-8 rounded-full cursor-pointer"
-                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                alt="user photo"
-              />
+              
             </button>
           </div>
           {/* user profil */}
@@ -184,105 +181,80 @@ const toggle2 = ()=>{
 </aside>
 {/* End sidebar */}
 <div className="p-4 ml-14 mt-5  ">
-   <div  className={`p-4 border-2 bg-blue-100 ${isSidebarOpen ? 'translate-x-0':'14'} transition-transform  border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-10`}>
-      <div className="grid grid-cols-3 gap-4 mb-4">
-        {/* les trois premiers grid (1re colone) */}
-         <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+   <div  className={`p-4 border-2 bg-white ${isSidebarOpen ? 'translate-x-0':'14'} transition-transform  border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-10`}>
+      <div className="flex items-center justify-center h-20 rounded p-3 bg-slate-200 dark:bg-gray-800 mb-8 font-poppins">
+            <div className="flex justify-between w-full items-center">
+               <div className="flex items-center gap-2">
+                  <div className="h-[30px] w-2 bg-violet-700 rounded-lg"></div>
+                  <p className="text-xl text-black dark:text-gray-500">
+                     Issues
+                  </p>
+               </div>
+               <div className="bg-violet-700 flex items-center gap-1 text-white rounded-lg p-2 text-sm cursor-pointer">
+                  <MdReportGmailerrorred/>
+                  <p>Report A Problem</p>
+               </div>
+            </div>
+         </div>
+      <div className="grid grid-cols-1 gap-4 mb-4 font-poppins">
+         <div className="flex  bg-red-100 h-20 dark:bg-gray-800 rounded">
+            <div className="flex items-center justify-between w-full gap-2 p-6">
+               <div className="flex gap-2 items-center">
+                  <div className="bg-red-600 text-white p-2 rounded-full"><MdDangerous/></div>
+                  <p className="text-xs text-black dark:text-gray-500">The website is loading slowly.</p>
+                  {/* nombre de caractere maximale 41 */}
+               </div>
+               <div className="bg-red-600 p-2 rounded">
+                  <p className="text-xs text-white dark:text-gray-500">Unresolved</p>
+               </div>
+            </div>
             <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
             </p>
          </div>
-         <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+         <div className="flex  bg-red-100 h-20 dark:bg-gray-800 rounded">
+            <div className="flex items-center justify-between w-full gap-2 p-6">
+               <div className="flex gap-2 items-center">
+                  <div className="bg-red-600 text-white p-2 rounded-full"><MdDangerous/></div>
+                  <p className="text-xs text-black dark:text-gray-500">Unable to access the internal tool.</p>
+                  {/* nombre de caractere maximale 41 */}
+               </div>
+               <div className="bg-red-600 p-2 rounded">
+                  <p className="text-xs text-white dark:text-gray-500">Unresolved</p>
+               </div>
+            </div>
             <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
             </p>
          </div>
-         <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+         <div className="flex  bg-green-100 h-20 dark:bg-gray-800 rounded">
+            <div className="flex items-center justify-between w-full gap-2 p-6">
+               <div className="flex gap-2 items-center">
+                  <div className="bg-green-500 text-white p-2 rounded-full"><GoCheck/></div>
+                  <p className="text-xs text-black dark:text-gray-500">Water problem in office.</p>
+                  {/* nombre de caractere maximale 41 */}
+               </div>
+               <div className="bg-green-500 p-2 rounded">
+                  <p className="text-xs text-white dark:text-gray-500">Resolved</p>
+               </div>
+            </div>
             <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
             </p>
          </div>
-      </div>
-      <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <p className="text-2xl text-gray-400 dark:text-gray-500">
-            <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-            </svg>
-         </p>
-      </div>
-      <div className="grid grid-cols-2 gap-4 mb-4">
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+         <div className="flex  bg-red-100 h-20 dark:bg-gray-800 rounded">
+            <div className="flex items-center justify-between w-full gap-2 p-6">
+               <div className="flex gap-2 items-center">
+                  <div className="bg-red-600 text-white p-2 rounded-full"><MdDangerous/></div>
+                  <p className="text-xs text-black dark:text-gray-500">Office time is not manageable.</p>
+                  {/* nombre de caractere maximale 41 */}
+               </div>
+               <div className="bg-red-600 p-2 rounded">
+                  <p className="text-xs text-white dark:text-gray-500">Unresolved</p>
+               </div>
+            </div>
             <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-      </div>
-      <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <p className="text-2xl text-gray-400 dark:text-gray-500">
-            <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-            </svg>
-         </p>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
             </p>
          </div>
       </div>
+      {/* --------------- */}
    </div>
 </div>
 
