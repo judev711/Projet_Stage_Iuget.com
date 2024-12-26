@@ -72,7 +72,11 @@ const toggle2 = ()=>{
               className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               onClick={toggle}
             >
-              
+              <img
+                className=" md:w-8 md:h-8 max-lg:w-8 max-lg:h-8  max-sm:w-8 max-sm:h-8 rounded-full cursor-pointer"
+                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                alt="user photo"
+              />
             </button>
           </div>
           {/* user profil */}
