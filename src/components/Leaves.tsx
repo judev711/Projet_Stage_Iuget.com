@@ -189,7 +189,7 @@ const toggle2 = ()=>{
 </aside>
 {/* End sidebar */}
 <div className="p-4 ml-14 mt-5  ">
-   <div  className={`p-4 border-2 bg-blue-100 ${isSidebarOpen ? 'translate-x-0':'14'} transition-transform  border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-10`}>
+   <div  className={`p-4 border-2 bg-[#F3F4F6] ${isSidebarOpen ? 'translate-x-0':'14'} transition-transform  border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-10`}>
       
         {/*  Leaves */}
          <div className="flex items-center p-3 h-20 rounded bg-gray-50 dark:bg-gray-800 mb-4 font-poppins">
@@ -206,7 +206,7 @@ const toggle2 = ()=>{
             
          </div>
            {/* Leaves History */}
-      <div className="flex flex-col  mb-4  rounded bg-gray-50 dark:bg-gray-800">
+      <div className="flex flex-col  mb-1  rounded bg-gray-50 dark:bg-gray-800">
          <div className="flex   justify-between p-3  rounded  dark:bg-gray-800 w-full mb-4">
             <div className="flex  gap-2">
                <div className=" flex items-center h-[30px] w-2 rounded-lg bg-violet-700 p-1"></div>
@@ -326,8 +326,18 @@ const toggle2 = ()=>{
                </div>
       </div>
       </div>
-    
    </div>
+   <div className="flex items-center mt-4 justify-center gap-3 font-poppins mb-4 rounded  dark:bg-gray-800">
+        <div className="rounded-lg p-3 bg-slate-300 cursor-pointer">
+           <p>Previous</p>
+        </div>
+        <div className="rounded-lg p-3 bg-violet-700 cursor-pointer text-white">
+           <p>1</p>
+        </div>
+        <div className="rounded-lg p-3 bg-slate-300 cursor-pointer">
+          <p>Next</p>
+        </div>
+      </div>
 </div>
 
   </>

@@ -9,6 +9,8 @@ import { MdReportGmailerrorred } from "react-icons/md";
 import { MdNotifications } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { PiSignOut } from "react-icons/pi";
+import { MdOutlineSecurity } from "react-icons/md";
+import { MdDangerous } from "react-icons/md";
 
 const Notifications = () => {
   const [Tab, setTab]=useState(4);
@@ -25,10 +27,17 @@ const toggle2 = ()=>{
    setopen2(!open2)
 }
 
+
 //   const [Open, SetOpen]= useState(true)
   const HandlesTab = (Tab: SetStateAction<number>)=>{
  setTab(Tab)
   }
+  const today = new Date()
+  const FormatDate = today.toLocaleDateString("en-Us",{
+   year:"numeric",
+   month:"long",
+   day:"numeric"
+  })
 
   return ( <>
   
@@ -184,104 +193,101 @@ const toggle2 = ()=>{
 </aside>
 {/* End sidebar */}
 <div className="p-4 ml-14 mt-5  ">
-   <div  className={`p-4 border-2 bg-blue-100 ${isSidebarOpen ? 'translate-x-0':'14'} transition-transform  border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-10`}>
-      <div className="grid grid-cols-3 gap-4 mb-4">
-        {/* les trois premiers grid (1re colone) */}
-         <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+   <div  className={`p-4 border-2 bg-white ${isSidebarOpen ? 'translate-x-0':'14'} transition-transform  border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-10`}>
+        {/* Alerts */}
+         <div className="flex items-center justify-center h-20 rounded p-3 bg-slate-200 dark:bg-gray-800 mb-8 font-poppins">
+            <div className="flex justify-between w-full items-center">
+               <div className="flex items-center gap-2">
+                  <div className="h-[30px] w-2 bg-violet-700 rounded-lg"></div>
+                  <p className="text-xl text-black dark:text-gray-500">
+                     Alerts
+                  </p>
+               </div>
+               <div className="bg-violet-700 text-white rounded-lg p-3">
+                  <p>{FormatDate}</p>
+               </div>
+            </div>
          </div>
-         <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+      <div className="grid grid-cols-1 gap-4 mb-4 font-poppins">
+         <div className="flex p-6 rounded bg-[#F0FDF4] h-20 dark:bg-gray-800 border-[1px] border-gray-300">
+            <div className="flex flex-row items-center gap-2">
+               <div className="bg-green-400 text-white p-3 rounded-full"><MdOutlineSecurity/></div>
+               <div className="flex flex-col  gap-1">
+                  <p className="text-sm text-black dark:text-gray-500 font-semibold">
+                     Urgent: Action Required
+                  </p>
+                  <p className="text-xs text-gray-600 dark:text-gray-500">
+                     Please update your account information immediately.
+                  </p>
+               </div>
+            </div>
          </div>
-         <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+         <div className="flex p-6 rounded bg-[#F0FDF4] h-20 dark:bg-gray-800 border-[1px] border-gray-300">
+            <div className="flex flex-row items-center gap-2">
+               <div className="bg-violet-500 text-white p-3 rounded-full"><MdReportGmailerrorred/></div>
+               <div className="flex flex-col  gap-1">
+                  <p className="text-sm text-black dark:text-gray-500 font-semibold">
+                     Server Maintenance
+                  </p>
+                  <p className="text-xs text-gray-600 dark:text-gray-500">
+                     Scheduled server maintenance from 11 PM to 3 AM tomorrow.
+                  </p>
+               </div>
+            </div>
          </div>
-      </div>
-      <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <p className="text-2xl text-gray-400 dark:text-gray-500">
-            <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-            </svg>
-         </p>
-      </div>
-      <div className="grid grid-cols-2 gap-4 mb-4">
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+         <div className="flex p-6 rounded bg-red-100 h-20 dark:bg-gray-800 border-[1px] border-gray-300">
+            <div className="flex flex-row items-center gap-2">
+               <div className="bg-red-600 text-white p-3 rounded-full"><MdDangerous/></div>
+               <div className="flex flex-col  gap-1">
+                  <p className="text-sm text-black dark:text-gray-500 font-semibold">
+                     Critical Security Alert
+                  </p>
+                  <p className="text-xs text-gray-600 dark:text-gray-500">
+                     Beware of phishing emails requesting personal information.
+                  </p>
+               </div>
+            </div>
          </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+         <div className="flex p-6 rounded bg-[#F0FDF4] h-20 dark:bg-gray-800 border-[1px] border-gray-300">
+            <div className="flex flex-row items-center gap-2">
+               <div className="bg-green-400 text-white p-3 rounded-full"><MdOutlineSecurity/></div>
+               <div className="flex flex-col  gap-1">
+                  <p className="text-sm text-black dark:text-gray-500 font-semibold">
+                     Meeting Reminder
+                  </p>
+                  <p className="text-xs text-gray-600 dark:text-gray-500">
+                     Don't forget the team meeting at 10 AM today.
+                  </p>
+               </div>
+            </div>
          </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+         <div className="flex p-6 rounded bg-[#F0FDF4] h-20 dark:bg-gray-800 border-[1px] border-gray-300">
+            <div className="flex flex-row items-center gap-2">
+               <div className="bg-green-400 text-white p-3 rounded-full"><MdOutlineSecurity/></div>
+               <div className="flex flex-col  gap-1">
+                  <p className="text-sm text-black dark:text-gray-500 font-semibold">
+                     Meeting Reminder
+                  </p>
+                  <p className="text-xs text-gray-600 dark:text-gray-500">
+                     Don't forget the team meeting at 10 AM today.
+                  </p>
+               </div>
+            </div>
          </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+         <div className="flex p-6 rounded bg-[#F0FDF4] h-20 dark:bg-gray-800 border-[1px] border-gray-300">
+            <div className="flex flex-row items-center gap-2">
+               <div className="bg-green-400 text-white p-3 rounded-full"><MdOutlineSecurity/></div>
+               <div className="flex flex-col  gap-1">
+                  <p className="text-sm text-black dark:text-gray-500 font-semibold">
+                     Meeting Reminder
+                  </p>
+                  <p className="text-xs text-gray-600 dark:text-gray-500">
+                     Don't forget the team meeting at 10 AM today.
+                  </p>
+               </div>
+            </div>
          </div>
-      </div>
-      <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <p className="text-2xl text-gray-400 dark:text-gray-500">
-            <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-            </svg>
-         </p>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">
-               <svg className="w-3.5 h-3.5"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
+         
       </div>
    </div>
 </div>
