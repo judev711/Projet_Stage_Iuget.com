@@ -21,6 +21,12 @@ const Reportproblem = () => {
 const toggle = ()=>{
    setopen(!open)
 }
+const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+
 
 //   const [Open, SetOpen]= useState(true)
   const HandlesTab = (Tab: SetStateAction<number>)=>{
@@ -194,11 +200,80 @@ const toggle2 = ()=>{
                      Issues
                   </p>
                </div>
-               <div className="bg-violet-700 flex items-center gap-1 text-white rounded-lg p-2 text-sm cursor-pointer">
+               <div onClick={toggleModal} className="bg-violet-700 flex items-center gap-1 text-white rounded-lg p-2 text-sm cursor-pointer">
                   <MdReportGmailerrorred/>
                   <p>Report A Problem</p>
                </div>
             </div>
+            {/* Debut de la modal*********************************************************** */}
+             <div>
+            {/* Main modal */}
+            {isOpen && (
+            <div
+               className="fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-black bg-opacity-75 font-poppins"
+            >
+               <div className="relative p-4 w-[95vw]  bg-white rounded-lg shadow dark:bg-gray-700">
+                  {/* Modal header */}
+                  <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                  <div className="flex items-center gap-2 ">
+                     <div className="w-2 bg-violet-700 h-[30px] rounded-full"></div>
+                     <p className="text-[18px] text-black dark:text-gray-500 ">Report A Problem</p>
+                  </div>
+                  <button
+                     onClick={toggleModal}
+                     className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                     <svg
+                        className="w-3 h-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 14"
+                        aria-hidden="true"
+                     >
+                        <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M1 1l6 6m0 0l6 6M7 7l6-6M7 7L1 13"
+                        />
+                     </svg>
+                     <span className="sr-only">Close modal</span>
+                  </button>
+                  </div>
+
+                  {/* Modal body */}
+                  <div className="p-4 md:p-5 space-y-4">
+                     <div className="flex flex-col gap-2 ">
+                     <p className="text-sm font-bold leading-relaxed text-black dark:text-gray-400">
+                        Describe The Problem :
+                     </p>
+                     <textarea className="rounded h-[20vw] bg-slate-200 border-none focus:outline-none  "></textarea>
+                     </div>
+                  </div>
+
+                  {/* Modal footer */}
+                  <div className="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                  <button
+                     onClick={toggleModal}
+                     className="text-white bg-black  focus:ring-4 focus:outline-none  font-medium rounded-lg text-[14px] px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                     Cancel
+                  </button>
+                  <button
+                     onClick={toggleModal}
+                     className="py-2.5 px-5 ml-3  font-medium text-white text-[14px] focus:outline-none bg-violet-700 rounded-lg border    focus:ring-4   dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                  >
+                     Request Now
+                  </button>
+                  </div>
+               </div>
+            </div>
+            )}
+    </div>
+            {/* Fin De LA modal */}
+    
+        
          </div>
       <div className="grid grid-cols-1 gap-4 mb-4 font-poppins">
          <div className="flex  bg-red-100 h-20 dark:bg-gray-800 rounded">
