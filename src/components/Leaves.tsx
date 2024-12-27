@@ -15,6 +15,7 @@ import { GrAppsRounded } from "react-icons/gr";
 import { FiFilter } from "react-icons/fi";
 import { FaSort } from "react-icons/fa";
 import { TbClockHour4 } from "react-icons/tb";
+import { TbEdit } from "react-icons/tb";
 
 const Leaves = () => {
   const [Tab, setTab]=useState(3);
@@ -33,6 +34,10 @@ const toggle2 = ()=>{
 //   const [Open, SetOpen]= useState(true)
   const HandlesTab = (Tab: SetStateAction<number>)=>{
  setTab(Tab)
+  }
+  const [LeaveOpen, SetLeaveOpen]= useState(false)
+  const toggleModal = ()=>{
+   SetLeaveOpen(!LeaveOpen)
   }
 
   return ( <>
@@ -192,17 +197,143 @@ const toggle2 = ()=>{
       
         {/*  Leaves */}
          <div className="flex items-center p-3 h-20 rounded bg-gray-50 dark:bg-gray-800 mb-4 font-poppins">
-            <div className="flex items-center justify-between  bg-gray-50 dark:bg-gray-800 w-full">
-               <div className="flex flex-row gap-2">
+            <div  className="flex items-center justify-between  bg-gray-50 dark:bg-gray-800 w-full">
+               <div  className="flex flex-row gap-2">
                   <div className="h-[30px] bg-violet-700 w-2 rounded-lg"></div>
                   <p className="text-xl text-black dark:text-gray-500">Leaves</p>
                </div>
-               <div className="flex items-center gap-2 bg-violet-700 p-2 px-4 rounded-lg cursor-pointer">
+               <div onClick={toggleModal} className="flex items-center gap-2 bg-violet-700 p-2 px-4 rounded-lg cursor-pointer">
                   <MdModeEditOutline className="text-white text-2xl "/>
                   <p className="text-[15px] text-white dark:text-gray-500">Leave Request</p>
                </div>
             </div>
-            
+            {/* Debut de la modal*********************************************************** */}
+             <div>
+            {/* Main modal */}
+            {LeaveOpen && (
+            <div
+               className="fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-screen h-screen bg-black bg-opacity-75 font-poppins"
+            >
+               <div className="relative p-4 w-[95vw]  bg-white rounded-lg shadow dark:bg-gray-700 ">
+                  {/* Modal header */}
+                  <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                  <div className="flex items-center gap-2 ">
+                     <div className="w-2 bg-violet-700 h-[30px] rounded-full"></div>
+                     <p className="text-[18px]  max-sm:text-[14px] text-black dark:text-gray-500 ">Leave Request</p>
+                  </div>
+                  <button
+                     onClick={toggleModal}
+                     className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                     <svg
+                        className="w-3 h-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 14"
+                        aria-hidden="true"
+                     >
+                        <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M1 1l6 6m0 0l6 6M7 7l6-6M7 7L1 13"
+                        />
+                     </svg>
+                     <span className="sr-only">Close modal</span>
+                  </button>
+                  </div>
+
+                  {/* Modal body */}
+                  <div className="p-4 md:p-5 space-y-4">
+                     {/* tete des deux div */}
+                     <div className="grid grid-cols-2  gap-2 max-sm:grid-cols-1 justify-center items-center">
+                        <div className="flex flex-col gap-1 ">
+                           <div className="flex flex-col gap-1 mb-3 max-sm:mb-1">
+                              <p className="text-sm font-bold leading-relaxed text-black dark:text-gray-400">
+                                 Leave Type
+                              </p>
+                           <select name="New" id="first" className="font-poppins bg-gray-100    border-[1px] border-black rounded max-sm:text-sm ">
+                                 <option value="banane">Choose Leave Type</option>
+                                 <option  value="macabo">Annual Leave</option>
+                                 <option  value="macabo">Monthly Leave</option>
+                                 <option  value="macabo">Sick Leave</option>
+                                 <option  value="macabo">Other</option>
+                              </select>
+                           </div>
+                           <div className="flex flex-col font-poppins gap-1 mb-3 max-sm:mb-1 ">
+                              {/* les deux inputs de  */}
+                              <div className="flex flex-col font-poppins gap-1 mb-3 max-sm:mb-1">
+                                 <p className="text-sm font-bold leading-relaxed text-black dark:text-gray-400">
+                                 From
+                              </p>
+                              <input type="date" className="bg-violet-200 rounded"/>
+                              </div>
+                              <div className="flex flex-col font-poppins gap-1 mb-3 max-sm:mb-1 ">
+                              <p className="text-sm font-bold leading-relaxed text-black dark:text-gray-400">
+                                 To
+                              </p>
+                              <input type="date" className="bg-violet-200 rounded"/>
+                           </div>
+                           </div>
+                           
+                           <div className="flex flex-col font-poppins gap-1 mb-3 max-sm:mb-1 ">
+                              <p className="text-sm font-bold leading-relaxed text-black dark:text-gray-400">
+                                 Reason
+                              </p>
+                              <textarea className="rounded"></textarea>
+                           </div>
+                        </div>
+                        {/* 2em  grid****************************************************** */}
+                        <div className="p-3 bg-green-100 text-sm rounded-lg">
+                           <p className="font-semibold text-center">Your Request Includes</p>
+                           <div className="flex justify-between w-full mb-3 mt-6 max-sm:mb-1 max-sm:mt-1">
+                              <p className="font-semibold">11/15/2023</p>
+                              <div className="flex items-center max-sm:gap-1 gap-3 text-sm">
+                                 <p className="text-violet-600 font-bold">Edit</p>
+                                 <TbEdit className="text-violet-600 text-[18px]"/>
+                              </div>
+                              
+                           </div>
+                           <div className="flex justify-between w-full mb-3 mt-6 max-sm:mb-1 max-sm:mt-1">
+                              <p className="font-semibold">11/15/2023</p>
+                              <div className="flex items-center max-sm:gap-1 gap-3  text-sm">
+                                 <p className="text-violet-600 font-bold">Edit</p>
+                                 <TbEdit className="text-violet-600 text-[18px]"/>
+                              </div>
+                              
+                           </div>
+                           <hr className="border-black/10"></hr>
+                           <div className="flex gap-2 mt-5 font-semibold max-sm:mt-2 max-sm:gap-1">
+                              <p>5</p>
+                              <p>Days of leaves</p>
+                           </div>
+                           
+                        </div>
+                        {/* fin des deux grids************************************************ */}
+                     </div>
+                  </div>
+
+                  {/* Modal footer */}
+                  <div className="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 max-sm:-mt-6">
+                  <button
+                     onClick={toggleModal}
+                     className="text-white bg-black  focus:ring-4 focus:outline-none  font-medium rounded-lg text-[14px] px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                     Cancel
+                  </button>
+                  <button
+                     onClick={toggleModal}
+                     className="py-2.5 px-5 ml-3  font-medium text-white text-[14px] focus:outline-none bg-violet-700 rounded-lg border    focus:ring-4   dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                  >
+                     Request Now
+                  </button>
+                  </div>
+               </div>
+            </div>
+            )}
+    </div>
+            {/* Fin De LA modal */}
          </div>
            {/* Leaves History */}
       <div className="flex flex-col  mb-1  rounded bg-gray-50 dark:bg-gray-800">
@@ -229,8 +360,9 @@ const toggle2 = ()=>{
             </div>
             
          </div>
+         
          {/* ici */}
-           <div className="grid grid-cols-4 gap-4 p-3 -mt-4 mb-6 max-sm:grid-cols-1 md:grid-cols-1 max-md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4   ">
+           <div className="grid grid-cols-2 gap-4 p-3 -mt-4 mb-6 max-sm:grid-cols-1 md:grid-cols-1 max-md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2   ">
                <div className="flex justify-between   rounded-md bg-slate-300 font-poppins ">
                   <div className="flex flex-col  p-3">
                      <div className="flex items-center gap-2 mb-5">
