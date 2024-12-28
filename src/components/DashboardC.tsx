@@ -1,5 +1,5 @@
 // import React from 'react'
-import {  SetStateAction, useState } from "react"
+import {  SetStateAction, useState,useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { BiHome } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
@@ -12,14 +12,12 @@ import { PiSignOut } from "react-icons/pi";
 import { FaSignOutAlt } from "react-icons/fa";
 import { LuCoffee } from "react-icons/lu";
 import { MdAccessTime } from "react-icons/md";
+import { MdDarkMode } from "react-icons/md";
 
 
 const DashboardC = () => {
   const [Tab, setTab]=useState(1);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+ 
   const [open, setopen]=useState(false)
 const toggle = ()=>{
    setopen(!open)
@@ -33,6 +31,35 @@ const toggle2 = ()=>{
   const HandlesTab = (Tab: SetStateAction<number>)=>{
  setTab(Tab)
   }
+  //
+   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+ //------------------------------profil--------------------------------------------------
+ const ProfilRef = useRef<HTMLDivElement>(null);
+ const handleClickOutside = (event: MouseEvent) => {
+    if (
+      ProfilRef.current &&
+      !ProfilRef.current.contains(event.target as Node)
+    ) {
+      setopen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
+
+  //
 
 const today = new Date();
 const formatdate = today.toLocaleDateString("en-Us",{
@@ -49,7 +76,98 @@ const formatdate = today.toLocaleDateString("en-Us",{
  })
 
   return ( <>
+    <nav className={`fixed top-0 z-50 w-full bg-[#7e22ce] border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700`}>
+  <div className="px-3 py-3 lg:px-5 lg:pl-3 ">
+    <div className="flex items-center justify-between">
+      {/* navbar logo */}
+      <div  className="flex items-center justify-start rtl:justify-end " onClick={toggle2}>
+        
+        {/* burger */}
+        <button onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white  font-bold  dark:text-gray-400 dark:hover:bg-gray-700 " >
+               <RxHamburgerMenu className={`w-5 h-5 `} />
+            {/* burger */}
+         </button>
+         
+         
+        <a href="" className="flex ms-2 md:me-24  gap-2">
+          <span className="self-center text-xl text-white font-extrabold sm:text-2xl whitespace-nowrap text dark:text-white">Theo</span>
+        </a>
+        {/* logo */}
+      </div>
+      {/* end of navbar logo */}
+      {/* navbar of profil */}
+ <div className="flex items-center">
+        <div className="flex items-center ms-3">
+          {/* user profile */}
+          <div className="flex items-center gap-5 max-md:gap-2">
+            <Link to="/Login">
+            <div className="group">
+              <div className="flex items-center gap-2 group-hover:bg-white border  p-2 rounded-lg cursor-pointer">
+                <PiSignOut className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md: group-hover:text-black  text-white dark:text-gray-400  dark:group-hover:text-white" />
+                <p className="text-white text-sm group-hover:text-black text-nowrap">Sign Out</p>
+              </div>
+            </div>  
+            </Link>
+            <MdNotifications className="flex-shrink-0 max-sm:w-5 max-sm:h-5 w-7 h-7 text-white cursor-pointer dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+            <MdDarkMode className="text-2xl text-white"/>
+            <button
+              type="button"
+              className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              onClick={toggle}
+            >
+              <img
+                className=" md:w-8 md:h-8 max-lg:w-8 max-lg:h-8  max-sm:w-8 max-sm:h-8 rounded-full cursor-pointer"
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&amp;w=1000&amp;q=80" alt="Theodore711"
+                
+              />
+            </button>
+          </div>
+          {/* user profil */}
+                  <div
+                  
+                    className={`z-50 absolute right-0 mt-52 mx-2  py-2 w-54 bg-white rounded-md shadow-lg dark:bg-gray-700 ${
+                      open ? 'block' : 'hidden'
+                    }`}
+                  >
+                    <ul className="divide-y divide-gray-100 dark:divide-gray-600">
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          <p>Theo@711</p>
+                          <p>theodore@gmail.com</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:text-green-600 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                        Profile
+                        </a>
+                      </li>
+                    
+                      <li>
+                      <Link to="/Login">
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:text-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Sign out
+                        </a>
+                      </Link>
+                      </li>
+                    </ul>
+                  </div>
+          {/* **************** */}
+        </div>
+      </div>
   
+    </div>
+  </div>
+</nav>
+
 <nav className="fixed top-0 z-50 w-full bg-[#7e22ce] border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
   <div className="px-3 py-3 lg:px-5 lg:pl-3 ">
     <div className="flex items-center justify-between">
@@ -83,6 +201,7 @@ const formatdate = today.toLocaleDateString("en-Us",{
             </div>  
             </Link>
             <MdNotifications className="flex-shrink-0 max-sm:w-5 max-sm:h-5 w-7 h-7 text-white cursor-pointer dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+            <MdDarkMode className="text-2xl text-white"/>
             <button
               type="button"
               className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -90,8 +209,8 @@ const formatdate = today.toLocaleDateString("en-Us",{
             >
               <img
                 className=" md:w-8 md:h-8 max-lg:w-8 max-lg:h-8  max-sm:w-8 max-sm:h-8 rounded-full cursor-pointer"
-                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                alt="user photo"
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&amp;w=1000&amp;q=80" alt="Bonnie image"
+                
               />
             </button>
           </div>
@@ -139,14 +258,15 @@ const formatdate = today.toLocaleDateString("en-Us",{
   </div>
 </nav>
 {/* start sidebar */}
-<aside  className={`fixed  top-0 left-0 z-40  h-screen  pt-20  ${!isSidebarOpen ?'w-16':'w-56'}    bg-violet-100 border-r border-gray-200 transition-all duration-700  dark:bg-gray-800 dark:border-gray-700`} >
+{open && (
+<aside ref={ProfilRef}  className={`fixed  top-0 left-0 z-40  h-screen  pt-20  ${!isSidebarOpen ?'w-16':'w-56'}    bg-violet-100 border-r border-gray-200 transition-all duration-700  dark:bg-gray-800 dark:border-gray-700`} >
    <div  className={`h-full  px-[0.80rem] pb-4 overflow-y-auto  dark:bg-gray-800   `}>
       <ul className={`space-y-3 font-medium     ` }>
         {/* icon Dashboard */}
          <li className="">
           <Link to='/employee/dashboard'>
             <a href="#" className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white  hover:bg-gray-100 dark:hover:bg-gray-700 group ">
-               <BiHome className="flex-shrink-0 w-5 h-5  text-gray-500    dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white   "/>
+               <BiHome className={`flex-shrink-0 w-5 h-5 ${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-500'}      dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white   `}/>
                <span  onClick={()=>HandlesTab(1)} className={`${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-900'} ms-3 ${!open2 && 'hidden'}  `} > Dashboard</span>
             </a>
             </Link>
@@ -156,7 +276,7 @@ const formatdate = today.toLocaleDateString("en-Us",{
             <Link to='/userdetail' >
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                
-               <FiUser className="flex-shrink-0 w-5 h-5 text-gray-500  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+               <FiUser className={`flex-shrink-0 w-5 h-5 ${Tab ===2 ? 'text-blue-600 font-bold':'text-gray-500'}  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`} />
                   
                <span onClick={()=>HandlesTab(2)} className={`${Tab===2 ? 'text-blue-600 font-bold':'text-gray-900'} ms-3 whitespace-nowrap ${!open2 && 'hidden'} `} >Profile</span>
                
@@ -168,7 +288,7 @@ const formatdate = today.toLocaleDateString("en-Us",{
          {/* Leaves Applications */}
           <Link to='/Leaves' >
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-               <MdOutlineDateRange className="flex-shrink-0 w-5 h-5 text-gray-500  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+               <MdOutlineDateRange className={`flex-shrink-0 w-5 h-5 ${Tab ===3 ? 'text-blue-600 font-bold':'text-gray-500'}  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`} />
                <span  onClick={()=>HandlesTab(3)} className={`${Tab===3 ? 'text-blue-600 font-bold':'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Leave Applications</span>
             </a>
             </Link>
@@ -179,7 +299,7 @@ const formatdate = today.toLocaleDateString("en-Us",{
           <Link to='/Notifications' >
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                
-               <IoNotificationsOutline  className="flex-shrink-0 w-5 h-5 text-gray-500  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+               <IoNotificationsOutline  className={`flex-shrink-0 w-5 h-5 ${Tab ===4 ? 'text-blue-600 font-bold':'text-gray-500'} dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}/>
                <span  onClick={()=>HandlesTab(4)} className={`${Tab===4 ? 'text-blue-600 font-bold':'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Notifications</span>
             </a>
             {/* Notifications */}
@@ -190,7 +310,68 @@ const formatdate = today.toLocaleDateString("en-Us",{
           <Link to='/Reportproblem' >
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                
-               <MdReportGmailerrorred className="flex-shrink-0 w-5 h-5 text-gray-500  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+               <MdReportGmailerrorred className={`flex-shrink-0 w-5 h-5 ${Tab ===5 ? 'text-blue-600 font-bold':'text-gray-500'}  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}/>
+               <span  onClick={()=>HandlesTab(5)} className={`${Tab===5 ? 'text-blue-600 font-bold': 'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden duration-500'} `}>Report a Problem</span>
+            </a>
+            </Link>
+            {/*reportproblems  */}
+         </li>
+      </ul>
+   </div>
+</aside>
+)}
+<aside ref={ProfilRef}  className={`fixed  top-0 left-0 z-40  h-screen  pt-20  ${!isSidebarOpen ?'w-16':'w-56'}    bg-violet-100 border-r border-gray-200 transition-all duration-700  dark:bg-gray-800 dark:border-gray-700`} >
+   <div  className={`h-full  px-[0.80rem] pb-4 overflow-y-auto  dark:bg-gray-800   `}>
+      <ul className={`space-y-3 font-medium     ` }>
+        {/* icon Dashboard */}
+         <li className="">
+          <Link to='/employee/dashboard'>
+            <a href="#" className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white  hover:bg-gray-100 dark:hover:bg-gray-700 group ">
+               <BiHome className={`flex-shrink-0 w-5 h-5 ${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-500'}      dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white   `}/>
+               <span  onClick={()=>HandlesTab(1)} className={`${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-900'} ms-3 ${!open2 && 'hidden'}  `} > Dashboard</span>
+            </a>
+            </Link>
+         </li>
+         <li>
+         {/* profil users */}
+            <Link to='/userdetail' >
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               
+               <FiUser className={`flex-shrink-0 w-5 h-5 ${Tab ===2 ? 'text-blue-600 font-bold':'text-gray-500'}  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`} />
+                  
+               <span onClick={()=>HandlesTab(2)} className={`${Tab===2 ? 'text-blue-600 font-bold':'text-gray-900'} ms-3 whitespace-nowrap ${!open2 && 'hidden'} `} >Profile</span>
+               
+            </a>
+            </Link>
+         {/* profil users */}
+         </li>
+         <li>
+         {/* Leaves Applications */}
+          <Link to='/Leaves' >
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               <MdOutlineDateRange className={`flex-shrink-0 w-5 h-5 ${Tab ===3 ? 'text-blue-600 font-bold':'text-gray-500'}  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`} />
+               <span  onClick={()=>HandlesTab(3)} className={`${Tab===3 ? 'text-blue-600 font-bold':'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Leave Applications</span>
+            </a>
+            </Link>
+         {/* Leaves Applications */}
+         </li>
+         <li>
+          {/* Notifications */}
+          <Link to='/Notifications' >
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               
+               <IoNotificationsOutline  className={`flex-shrink-0 w-5 h-5 ${Tab ===4 ? 'text-blue-600 font-bold':'text-gray-500'} dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}/>
+               <span  onClick={()=>HandlesTab(4)} className={`${Tab===4 ? 'text-blue-600 font-bold':'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Notifications</span>
+            </a>
+            {/* Notifications */}
+            </Link>
+         </li>
+         <li>
+          {/* reportproblems */}
+          <Link to='/Reportproblem' >
+            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               
+               <MdReportGmailerrorred className={`flex-shrink-0 w-5 h-5 ${Tab ===5 ? 'text-blue-600 font-bold':'text-gray-500'}  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}/>
                <span  onClick={()=>HandlesTab(5)} className={`${Tab===5 ? 'text-blue-600 font-bold': 'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden duration-500'} `}>Report a Problem</span>
             </a>
             </Link>
