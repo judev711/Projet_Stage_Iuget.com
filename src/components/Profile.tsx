@@ -337,8 +337,8 @@ const toggle2 = ()=>{
                 </div>
                 <div className="flex flex-col  p-3">
                   <div className="mb-4">
-                     <div className="rounded-full p-2 bg-gray-200 flex items-center justify-center ">
-                        <p className="text-green-300 text-xs font-extrabold">On Time</p>
+                     <div className="rounded-full p-2 bg-green-200 flex items-center justify-center ">
+                        <p className="text-green-400 text-xs font-extrabold">On Time</p>
                      </div>
                   </div>
                   <div className="flex flex-col gap-1  text-sm">

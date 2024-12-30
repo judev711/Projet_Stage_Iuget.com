@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard";
 import Notification from "./components/Notification";
 import Leaves from "./components/Leaves";
 import Reportproblem from "./components/Reportproblem";
+import Register from "./components/Register";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/Notifications" element={<Notification/>}></Route>
           <Route path="/Leaves" element={<Leaves/>}></Route>
           <Route path="/Reportproblem" element={<Reportproblem />}></Route>
+          <Route path="/Register" element={<Register/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

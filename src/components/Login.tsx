@@ -92,11 +92,13 @@ const Login = () => {
                         Sign in as team lead
                       </a>
                     </p>
+                    <Link to="/Register">
                     <p className="text-white bg-violet-700 p-2 rounded-lg font-semibold">
-                      <a href="https://monecoledigitale.com/wp-content/uploads/2024/01/DEVELOPPEUR-WEB-ET-WEB-MOBILE%E2%80%93-RNCP-37674BC01.pdf">
+                      <a href="">
                         Sign in as admin
                       </a>
                     </p>
+                    </Link>
                   </div>
                 </div>
               </form>
