@@ -18,7 +18,7 @@ const Acceuil = () => {
           <h1>Theodore*711</h1>
         </div>
         <div className="mt-10 justify-center items-center">
-          <Link to="/Login">
+          <Link to="/register">
             <p className="bg-blue-600 p-3 font-bold rounded-lg text-white">Get started</p>
           </Link>
         </div>

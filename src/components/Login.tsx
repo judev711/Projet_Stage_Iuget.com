@@ -1,7 +1,6 @@
 // import React from "react";
 import { BiLogoFacebook } from "react-icons/bi";
 import { FaGoogle } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -10,7 +9,7 @@ const Login = () => {
       <div className="flex w-full ">
         {/* section connection  */}
         <div className="bg-white w-full    ">
-          <div className="p-8">
+          <div className="p-8 xl:mt-5">
             <h1 className="text-2xl font-bold mb-5">Welcome Back</h1>
             <div className="grid grid-cols-2 gap-2 w-full max-md:grid-cols-1">
               {/*reseau sociaux */}
@@ -106,27 +105,9 @@ const Login = () => {
           </div>
         </div>
         {/* section information */}
-        <div className="bg-violet-600 w-full max-lg:hidden flex items-center p-4">
-          <div className="">
-            <h1 className="text-white text-5xl font-bold mb-4 ">
-              {" "}
-              Lorem ipsum dolor sit amet consectetur ?
-            </h1>
-            <p className="text-xl text-white mb-12 ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sint
-              obcaecati magnam adipisci ullam dolor minus, quasi autem
-              voluptates odit consequuntur labore. Alias, unde illo dolorem quam
-              quia odio veritatis!
-            </p>
-            <div className="flex items-center">
-              <a
-                href="https://monecoledigitale.com/wp-content/uploads/2024/01/DEVELOPPEUR-WEB-ET-WEB-MOBILE%E2%80%93-RNCP-37674BC01.pdf"
-                className="flex items-center hover:scale-105 duration-300"
-              >
-                <p className="p-6 text-white font-bold">Get Started</p>
-                <FaArrowRight className="text-xl text-white" />
-              </a>
-            </div>
+        <div className=" w-full max-lg:hidden flex items-center p-4 border-black border-1">
+          <div className="flex justify-center items-center  ">
+            <img src="../src/assets/image_login.jpeg" alt="image_login" className="rounded-md bg-contain hover:scale- duration-300 mt-10"/>
           </div>
         </div>
       </div>

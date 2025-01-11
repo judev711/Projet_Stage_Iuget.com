@@ -8,11 +8,13 @@ export const content = [
 ];
 export const theme = {
   extend: {
-    fontFamily:{
-      'poppins':['Poppins', 'sans-serif'],
-    }
+    fontFamily: {
+      poppins: ["Poppins", "sans-serif"],
+    },
   },
+  darkmode: "class",
 };
+
 export const plugins = [
   plugin(), // Ajout du plugin Flowbite
 ];

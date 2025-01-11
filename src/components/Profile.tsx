@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { BiHome } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { MdOutlineDateRange } from "react-icons/md";
+import { MdDarkMode, MdOutlineDateRange } from "react-icons/md";
 import { MdReportGmailerrorred } from "react-icons/md";
 import { MdNotifications } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -31,10 +31,7 @@ const Profile = () => {
 const toggle = ()=>{
    setopen(!open)
 }
-const  [open2, setopen2] = useState(true);
-const toggle2 = ()=>{
-   setopen2(!open2)
-}
+
 
 //   const [Open, SetOpen]= useState(true)
   const HandlesTab = (Tab: SetStateAction<number>)=>{
@@ -43,14 +40,14 @@ const toggle2 = ()=>{
 
   return ( <>
   
-<nav className="fixed top-0 z-50 w-full bg-[#7e22ce]  border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-  <div className="px-3 py-3 lg:px-5 lg:pl-3 slate-200 ">
+ <nav  className={`fixed top-0 z-50 w-full bg-[#7e22ce] border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700`}>
+  <div className="px-3 py-3 lg:px-5 lg:pl-3 ">
     <div className="flex items-center justify-between">
       {/* navbar logo */}
-      <div  className="flex items-center justify-start rtl:justify-end " onClick={toggle2}>
+      <div  className="flex items-center justify-start rtl:justify-end ">
         
         {/* burger */}
-        <button onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white  font-bold  dark:text-gray-400 dark:hover:bg-gray-700 " >
+        <button  onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white  font-bold  dark:text-gray-400 dark:hover:bg-gray-700 " >
                <RxHamburgerMenu className={`w-5 h-5 `} />
             {/* burger */}
          </button>
@@ -64,9 +61,9 @@ const toggle2 = ()=>{
       {/* end of navbar logo */}
       {/* navbar of profil */}
  <div className="flex items-center">
-        <div className="flex items-center ms-3">
+        <div className="flex items-center ms-[1.29rem]">
           {/* user profile */}
-          <div className="flex items-center gap-5 max-md:gap-2">
+          <div  className="flex items-center gap-5 max-md:gap-2">
             <Link to="/Login">
             <div className="group">
               <div className="flex items-center gap-2 group-hover:bg-white border  p-2 rounded-lg cursor-pointer">
@@ -76,55 +73,59 @@ const toggle2 = ()=>{
             </div>  
             </Link>
             <MdNotifications className="flex-shrink-0 max-sm:w-5 max-sm:h-5 w-7 h-7 text-white cursor-pointer dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+            <MdDarkMode className="text-2xl text-white"/>
             <button
+             
               type="button"
               className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               onClick={toggle}
             >
               <img
                 className=" md:w-8 md:h-8 max-lg:w-8 max-lg:h-8  max-sm:w-8 max-sm:h-8 rounded-full cursor-pointer"
-                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                alt="user photo"
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&amp;w=1000&amp;q=80" alt="Theodore711"
+                
               />
             </button>
           </div>
           {/* user profil */}
-          <div
-            className={`z-50 absolute right-0 mt-52 mx-2  py-2 w-54 bg-white rounded-md shadow-lg dark:bg-gray-700 ${
-              open ? 'block' : 'hidden'
-            }`}
-          >
-            <ul className="divide-y divide-gray-100 dark:divide-gray-600">
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  <p>Theo@711</p>
-                  <p>theodore@gmail.com</p>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 hover:text-green-600 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                 Profile
-                </a>
-              </li>
-             
-              <li>
-               <Link to="/Login">
-                <a
-                  href="#"
-                  className="block px-4 py-2 hover:text-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  Sign out
-                </a>
-               </Link>
-              </li>
-            </ul>
-          </div>
+                  <div
+                  
+                    className={`z-50 absolute right-0 mt-52 mx-2  py-2 w-54 bg-white rounded-md shadow-lg dark:bg-gray-700 ${
+                      open ? 'block' : 'hidden'
+                    }`}
+                  >
+                    <ul className="divide-y divide-gray-100 dark:divide-gray-600">
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          <p>Theo@711</p>
+                          <p>theodore@gmail.com</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:text-green-600 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                        Profile
+                        </a>
+                      </li>
+                    
+                      <li>
+                      <Link to="/Login">
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:text-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Sign out
+                        </a>
+                      </Link>
+                      </li>
+                    </ul>
+                  </div>
+          {/* **************** */}
         </div>
       </div>
   
@@ -140,7 +141,7 @@ const toggle2 = ()=>{
           <Link to='/employee/dashboard'>
             <a href="#" className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white  hover:bg-gray-100 dark:hover:bg-gray-700 group ">
                <BiHome className={`flex-shrink-0 w-5 h-5 ${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-500'}      dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white   `}/>
-               <span  onClick={()=>HandlesTab(1)} className={`${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-900'} ms-3 ${!open2 && 'hidden'}  `} > Dashboard</span>
+               <span  onClick={()=>HandlesTab(1)} className={`${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-900'} ms-[1.29rem]   `} > Dashboard</span>
             </a>
             </Link>
          </li>
@@ -151,7 +152,7 @@ const toggle2 = ()=>{
                
                <FiUser className={`flex-shrink-0 w-5 h-5 ${Tab ===2 ? 'text-blue-600 font-bold':'text-gray-500'}  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`} />
                   
-               <span onClick={()=>HandlesTab(2)} className={`${Tab===2 ? 'text-blue-600 font-bold':'text-gray-900'} ms-3 whitespace-nowrap ${!open2 && 'hidden'} `} >Profile</span>
+               <span onClick={()=>HandlesTab(2)} className={`${Tab===2 ? 'text-blue-600 font-bold':'text-gray-900'} ms-[1.29rem] whitespace-nowrap  `} >Profile</span>
                
             </a>
             </Link>
@@ -162,7 +163,7 @@ const toggle2 = ()=>{
           <Link to='/Leaves' >
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <MdOutlineDateRange className={`flex-shrink-0 w-5 h-5 ${Tab ===3 ? 'text-blue-600 font-bold':'text-gray-500'}  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`} />
-               <span  onClick={()=>HandlesTab(3)} className={`${Tab===3 ? 'text-blue-600 font-bold':'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Leave Applications</span>
+               <span  onClick={()=>HandlesTab(3)} className={`${Tab===3 ? 'text-blue-600 font-bold':'text-gray-900'} flex-1 ms-[1.29rem] whitespace-nowrap  `}>Leave Applications</span>
             </a>
             </Link>
          {/* Leaves Applications */}
@@ -173,7 +174,7 @@ const toggle2 = ()=>{
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                
                <IoNotificationsOutline  className={`flex-shrink-0 w-5 h-5 ${Tab ===4 ? 'text-blue-600 font-bold':'text-gray-500'} dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}/>
-               <span  onClick={()=>HandlesTab(4)} className={`${Tab===4 ? 'text-blue-600 font-bold':'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden'} `}>Notifications</span>
+               <span  onClick={()=>HandlesTab(4)} className={`${Tab===4 ? 'text-blue-600 font-bold':'text-gray-900'} flex-1 ms-[1.29rem] whitespace-nowrap  `}>Notifications</span>
             </a>
             {/* Notifications */}
             </Link>
@@ -184,7 +185,7 @@ const toggle2 = ()=>{
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                
                <MdReportGmailerrorred className={`flex-shrink-0 w-5 h-5 ${Tab ===5 ? 'text-blue-600 font-bold':'text-gray-500'}  dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white`}/>
-               <span  onClick={()=>HandlesTab(5)} className={`${Tab===5 ? 'text-blue-600 font-bold': 'text-gray-900'} flex-1 ms-3 whitespace-nowrap ${!open2 && 'hidden duration-500'} `}>Report a Problem</span>
+               <span  onClick={()=>HandlesTab(5)} className={`${Tab===5 ? 'text-blue-600 font-bold': 'text-gray-900'} flex-1 ms-[1.29rem] whitespace-nowrap  `}>Report a Problem</span>
             </a>
             </Link>
             {/*reportproblems  */}

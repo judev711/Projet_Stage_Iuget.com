@@ -8,6 +8,9 @@ import Notification from "./components/Notification";
 import Leaves from "./components/Leaves";
 import Reportproblem from "./components/Reportproblem";
 import Register from "./components/Register";
+import Commande from "./components/Commande";
+import Achat from "./components/Achat";
+import Connect from "./components/Connect";
 function App() {
   return (
     <>
@@ -22,6 +25,10 @@ function App() {
           <Route path="/Leaves" element={<Leaves/>}></Route>
           <Route path="/Reportproblem" element={<Reportproblem />}></Route>
           <Route path="/Register" element={<Register/>}></Route>
+          <Route path="/Dashboard" element={<Dashboard/>}></Route>
+          <Route path="/Commande" element={<Commande/>}></Route>
+          <Route path="/Achat" element={<Achat/>}></Route>
+          <Route path="/Connect" element={<Connect/>}></Route>
         </Routes>
       </BrowserRouter>
     </>
