@@ -35,7 +35,7 @@ ChartJS.register(
 
 const DashboardC = () => {
   const data = {
-    labels: ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'],
+    labels: ['junior', 'Bob', 'Charlie', 'Diana', 'Eve'],
     datasets: [
       {
         label: 'Présence',
@@ -355,8 +355,8 @@ const formatdate = today.toLocaleDateString("en-Us",{
         </div>
         <div>
           {/*Rapport Graphic  */}
-            <div className="p-6 bg-gray-100 min-h-screen">
-      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-4">
+            <div className="p-6 bg-gray-900">
+      <div className=" mx-auto bg-white shadow-lg rounded-lg p-4">
         <h1 className="text-2xl font-bold text-gray-700 mb-4">
           Tableau de Bord - Présence
         </h1>
