@@ -6,6 +6,18 @@ import { Link } from "react-router-dom";
 
 // import { Link } from "react-router-dom";
 const Acceuil = () => {
+  const [openIndex, setOpenIndex] = useState <number | null>(null);
+
+  const faqs = [
+    { question: "Qu'est-ce que React ?", answer: "React est une bibliothèque JavaScript pour construire des interfaces utilisateur." },
+    { question: "Qu'est-ce que Tailwind CSS ?", answer: "Tailwind CSS est un framework de design utilitaire pour construire rapidement des interfaces modernes." },
+    { question: "Comment fonctionne useState ?", answer: "useState est un hook qui permet de gérer l'état local dans un composant fonctionnel React." },
+  ];
+
+  const toggleFAQ = (index:number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -107,8 +119,53 @@ const Acceuil = () => {
           <button className="bg-violet-700 p-2 rounded flex justify-center font-bold ">Bientot Disponible</button>
         </div>
         </div>
-
       </div>
+      <div className="bg-white p-10">
+        <h1 className="text-3xl   font-extrabold text-violet-600 ">Foire aux questions</h1>
+        {/* foire aux question */}
+        <div>
+          <div className="max-w-xl mx-auto mt-10 space-y- transition-all  ">
+      {faqs.map((faq, index) => (
+        <div
+          key={index}
+          className=" shadow-sm  transition-all "
+        >
+          <div
+            className="flex justify-between  items-center cursor-pointer bg-violet-700 p-4"
+            onClick={() => toggleFAQ(index)}
+          >
+            <h2 className="text-lg font-medium">{faq.question}</h2>
+            <div
+              className={`transform transition-transform duration-300  ${
+                openIndex === index ? "rotate-90" : ""
+              }`}
+            >
+              ▼
+            </div>
+          </div>
+          <div className={`bg-white w-full border overflow-hidden duration-500 ${openIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0' }`}>
+            {openIndex === index && (
+            <p className={`text-gray-600 mt-10 mb-10`}>{faq.answer}</p>
+          )}
+          </div>
+          
+        </div>
+      ))}
+    </div>
+
+        </div>
+        {/* foire aux question */}
+      </div>
+      <div className=" bg-violet-700 text-white p-3 flex flex-col ">
+        <div>
+          <h1 className="text-2xl font-bold mt-10 mb-10  ">
+“IsDev m'a aidé à dépasser mes limites et à atteindre mes objectifs. Leur approche personnalisée et leur expertise m'ont vraiment impressionné.”
+</h1>
+<p>[Jean Dupont]</p>
+        </div>
+        
+      </div>
+      
       
 
     </div>
