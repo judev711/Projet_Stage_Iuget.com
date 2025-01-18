@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaBars, FaTimes } from 'react-icons/fa'; // Import from react-icons/fa
 import { FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { FaChevronDown } from "react-icons/fa";
 
 // import { Link } from "react-router-dom";
 const Acceuil = () => {
@@ -92,32 +93,37 @@ const Acceuil = () => {
       <div className="p-10">
         <h1 className="text-3xl   font-extrabold text-violet-600 ">Prestation De service</h1>
       </div>
-      <div className="grid grid-cols-3 gap-4 max-sm:grid-cols-1 justify-center p-4">
+      <div className="grid grid-cols-3 gap-4 max-md:grid-cols-1 justify-center p-4">
         <div className="flex flex-col mb-10">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2VzdGlvbnxlbnwwfHwwfHx8MA%3D%3D" alt="" className="h-[25rem]"/>
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2VzdGlvbnxlbnwwfHwwfHx8MA%3D%3D" alt="" className=""/>
           <div className="flex flex-col gap-2">
           <h1 className="mt-5 text-xl font-bold text-violet-700">Coaching individuels</h1>
           <p className="text-1rem">Coaching personnalisé pour exploiter votre potentiel</p>
-          <button className="bg-violet-700 p-2 rounded flex justify-center font-bold ">Bientot Disponible</button>
+          <button className="bg-violet-700 text-white p-2 rounded flex justify-center mb-3 font-bold ">Bientot Disponible</button>
+          <div><p className="text-white xl:mx-60 max-sm:mx-20 md:mx-6 hover:bg-violet-400 rounded hover cursor-pointer   text-center items-center bg-violet-600  ">Plus d'informations</p></div>
         </div>
         </div>
         {/* deuxieme grid */}
         <div className="flex flex-col mb-10">
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGdlc3Rpb24lMjAlMjBkJ2hvcmFpcmV8ZW58MHx8MHx8fDA%3D" alt="" className="h-[25rem]"/>
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGdlc3Rpb24lMjAlMjBkJ2hvcmFpcmV8ZW58MHx8MHx8fDA%3D" alt="" className=""/>
           <div className="flex flex-col gap-2">
           <h1 className="mt-5 text-xl font-bold text-violet-700">Formation en développement personnel</h1>
           <p className="text-1rem">Formations pour renforcer vos compétences</p>
-          <button className="bg-violet-700 p-2 rounded flex justify-center font-bold ">Bientot Disponible</button>
+          <button className="bg-violet-700 text-white p-2 rounded flex justify-center mb-3 font-bold ">Bientot Disponible</button>
+          <div><p className="text-white xl:mx-60 max-sm:mx-20 md:mx-6 hover:bg-violet-400 rounded hover cursor-pointer   text-center items-center bg-violet-600  ">Plus d'informations</p></div>
         </div>
         </div>
         {/* troisieme grid */}
         <div className="flex flex-col mb-10">
-          <img src="https://media.istockphoto.com/id/486561416/photo/portrait-of-successful-applauding-young-people-sitting-in-line.jpg?s=1024x1024&w=is&k=20&c=xpfLrFcesLwVhz1f_4Zc8QIrzjyzR6bOaJQ495Lx2_I=" alt="" className="h-[25rem]"/>
+          <img src="https://media.istockphoto.com/id/486561416/photo/portrait-of-successful-applauding-young-people-sitting-in-line.jpg?s=1024x1024&w=is&k=20&c=xpfLrFcesLwVhz1f_4Zc8QIrzjyzR6bOaJQ495Lx2_I=" alt="" className=""/>
           <div className="flex flex-col gap-2">
           <h1 className="mt-5 text-xl font-bold text-violet-700">Ateliers De Motivation</h1>
           <p className="text-1rem">Ateliers de motivation pour booster votre confiance</p>
-          <button className="bg-violet-700 p-2 rounded flex justify-center font-bold ">Bientot Disponible</button>
-        </div>
+          <button className="bg-violet-700 text-white p-2 rounded flex justify-center font-bold mb-3 ">Bientot Disponible</button>
+          <div><p className="text-white xl:mx-60 max-sm:mx-20 md:mx-6 hover:bg-violet-400 rounded hover cursor-pointer   text-center items-center bg-violet-600  ">Plus d'informations</p></div>
+          
+          </div>
+          
         </div>
       </div>
       <div className="bg-white p-10">
@@ -134,13 +140,13 @@ const Acceuil = () => {
             className="flex justify-between  items-center cursor-pointer bg-violet-700 p-4"
             onClick={() => toggleFAQ(index)}
           >
-            <h2 className="text-lg font-medium">{faq.question}</h2>
+            <h2 className="text-lg font-medium text-white">{faq.question}</h2>
             <div
               className={`transform transition-transform duration-300  ${
-                openIndex === index ? "rotate-90" : ""
+                openIndex === index ? "rotate-180" : ""
               }`}
             >
-              ▼
+              <FaChevronDown className="text-white"/>
             </div>
           </div>
           <div className={`bg-white w-full border overflow-hidden duration-500 ${openIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0' }`}>
@@ -161,11 +167,54 @@ const Acceuil = () => {
           <h1 className="text-2xl font-bold mt-10 mb-10  ">
 “IsDev m'a aidé à dépasser mes limites et à atteindre mes objectifs. Leur approche personnalisée et leur expertise m'ont vraiment impressionné.”
 </h1>
-<p>[Jean Dupont]</p>
+<p className="">[Stopse Arsene]</p>
         </div>
         
       </div>
-      
+      <div className="mb-10 bg-white">
+        <div className="grid grid-cols-2 max-md:grid-cols-1 gap-3 container justify-center mx-auto mb-10 ">
+          <div className="flex flex-col  mt-16 ">
+            <div className="flex  flex-col  container justify-center p-3">
+            <h1 className="text-3xl text-violet-600 font-bold text-start">Contacter-Nous</h1>
+            <p className="text-start  text-gray-500">Contactez-nous dès aujourd'hui pour commencer votre parcours de suivi d'heure en temps réel dans un monde purement digitalisé.</p>
+            </div>
+            <form method="" action="" >
+              <div className="font-poppins text-gray-600  text-xs  p-3">
+                <div className="mb-2 flex flex-col text-start">
+                 <label className="font-extrabold">Nom *</label>
+                 <input type="text" className="p-[5px] px-1 text-sm "/>
+              </div>
+              <div className="mb-2 flex flex-col text-start">
+                 <label className="font-extrabold">Addresse e-mail *</label>
+                 <input type="text" className="p-[5px] px-1 text-sm "/>
+              </div>
+              <div className="mb-2 flex flex-col text-start ">
+                 <label className="font-extrabold">Message *</label>
+                 <textarea className="mb-3"/>
+                 <button type="submit" className=" optext-start p-3 rounded bg-violet-500 xl:mx-60 max-sm:mx-20 md:mx-6 hover:bg-violet-400 text-white text-sm">Envoyer le formulaire</button>
+              </div>
+
+              </div>
+              
+             
+
+            </form>
+          </div>
+          <div className=" mt-16 flex justify-center items-center bg-red-600 font-bold flex-col">
+            <p>Erreur TheoDev@711 </p>
+            MapBox Google Pour Demain Encours...
+          </div>
+          
+
+        </div>
+        <div className="bg-violet-600 text-white text-center flex justify-center flex-col p-3">
+          <h1 className="text-3xl text-white font-extrabold font-poppins mb-5 ">Qui sommes nous ?</h1>
+          <p className="max-md:text-sm mb-10"><span className="font-extrabold text-black">e@BuyClock</span> est une application web destiner à réaliser le plein potentiel d'une entreprise. Notre équipe d'experts qualifiés vous accompagne avec des solutions adaptées à vos besoins. Découvrez nos services de coaching, formations et ateliers pour transformer votre vie.</p>
+          <div className=" hover:brightness-75 duration-500 cursor-pointer max-sm:mx-40 xl:mx-[45vw] bg-violet-500 text-white p-3 "><p>Découvrir</p></div>
+        </div>
+        
+
+      </div>
       
 
     </div>
