@@ -26,15 +26,14 @@ const Login = () => {
               </div>
               {/* moteur de recherche */}
               <div className="flex items-center border-2 rounded-lg   border-gray-200 p-2  ">
-                <a
-                  href="https://monecoledigitale.com/wp-content/uploads/2024/01/DEVELOPPEUR-WEB-ET-WEB-MOBILE%E2%80%93-RNCP-37674BC01.pdf"
                   className="flex items-center gap-2"
-                >
+                  <Link to='/home'>
                   <FaGoogle className="text-xl font-bold" />
                   <p className="font-semi-bold text-nowrap">
                     Sign in with Google
                   </p>
-                </a>
+                  </Link>
+                
               </div>
             </div>
             <div className="mt-10 flex items-center justify-center mb-10">
@@ -83,20 +82,8 @@ const Login = () => {
                   <div className="flex flex-col gap-3 items-start ">
                     <Link to="/employee/dashboard">
                       <p className="text-white bg-violet-700 p-2 rounded-lg font-semibold">
-                        Sign in as employee
+                        Sign In
                       </p>
-                    </Link>
-                    <p className="text-white bg-violet-700 p-2 rounded-lg font-semibold">
-                      <a href="https://monecoledigitale.com/wp-content/uploads/2024/01/DEVELOPPEUR-WEB-ET-WEB-MOBILE%E2%80%93-RNCP-37674BC01.pdf">
-                        Sign in as team lead
-                      </a>
-                    </p>
-                    <Link to="/Register">
-                    <p className="text-white bg-violet-700 p-2 rounded-lg font-semibold">
-                      <a href="">
-                        Sign in as admin
-                      </a>
-                    </p>
                     </Link>
                   </div>
                 </div>
