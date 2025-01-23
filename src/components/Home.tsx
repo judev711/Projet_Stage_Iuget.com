@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div>
       <h1>Sign in with button</h1>
-      <SignInButton/>
+      <SignInButton mode="modal"/>
     </div>
   )
 }

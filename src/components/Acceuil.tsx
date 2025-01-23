@@ -1,12 +1,16 @@
 // import React from "react";
 import { useState } from "react";
 import { FaBars, FaTimes } from 'react-icons/fa'; // Import from react-icons/fa
-import { FiUser } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { FiUser } from "react-icons/fi";;
 import { FaChevronDown } from "react-icons/fa";
+import { Link } from "react-router";
 
 // import { Link } from "react-router-dom";
 const Acceuil = () => {
+  const [openBox, SetopenBox] = useState(false);
+  const togglebox = ()=>{
+    SetopenBox(!openBox)
+  }
   const [openIndex, setOpenIndex] = useState <number | null>(null);
 
   const faqs = [
@@ -68,12 +72,21 @@ const Acceuil = () => {
               Our Services
             </a>
           </li>
-          <li>
-            <Link to="/login">
-            <a href="" className="hover:text-gray-400 text-2xl block py-2 md:py-0">
-              <FiUser/>
-            </a>
+          <li className="flex items-center flex-col gap-2 transition-all duration-500">
+            <Link to='/Login'>
+            <button onClick={togglebox} className="">
+              <FiUser className="hover:text-gray-400  text-2xl block cursor-pointer " />
+            </button>
             </Link>
+            <ul className={`${openBox? 'hidden' : 'hidden'} bg-violet-900 rounded text-md   md:absolute  divide-y w-72 py-3 text- text-center font-poppins md:right-0 md:mt-[3.5rem] md:bg-violet-500`}>
+              <li className="cursor-pointer hover:text-gray-300 ">
+                <Link to="/Login"><p>Login</p></Link>
+              </li>
+              <li className="cursor-pointer hover:text-gray-300  ">
+                <Link to="/Register"><p>Register</p></Link>
+              </li>
+
+            </ul>
           </li>
         </ul>
         </div>
@@ -182,22 +195,18 @@ const Acceuil = () => {
               <div className="font-poppins text-gray-600  text-xs  p-3">
                 <div className="mb-2 flex flex-col text-start">
                  <label className="font-extrabold">Nom *</label>
-                 <input type="text" className="p-[5px] px-1 text-sm "/>
+                 <input type="text" className="p-[5px] px-1 text-sm " required/>
               </div>
               <div className="mb-2 flex flex-col text-start">
                  <label className="font-extrabold">Addresse e-mail *</label>
-                 <input type="text" className="p-[5px] px-1 text-sm "/>
+                 <input type="text" className="p-[5px] px-1 text-sm " required/>
               </div>
               <div className="mb-2 flex flex-col text-start ">
                  <label className="font-extrabold">Message *</label>
-                 <textarea className="mb-3"/>
+                 <textarea className="mb-3" required/>
                  <button type="submit" className=" optext-start p-3 rounded bg-violet-500 xl:mx-60 max-sm:mx-20 md:mx-6 hover:bg-violet-400 text-white text-sm">Envoyer le formulaire</button>
               </div>
-
               </div>
-              
-             
-
             </form>
           </div>
           <div className=" mt-16 flex justify-center items-center bg-red-600 font-bold flex-col">

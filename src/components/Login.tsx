@@ -2,6 +2,8 @@
 import { BiLogoFacebook } from "react-icons/bi";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { SignInButton } from "@clerk/clerk-react"
+
 
 const Login = () => {
   return (
@@ -13,27 +15,20 @@ const Login = () => {
             <h1 className="text-2xl font-bold mb-5">Welcome Back</h1>
             <div className="grid grid-cols-2 gap-2 w-full max-md:grid-cols-1">
               {/*reseau sociaux */}
-              <div className="flex items-center border-2 rounded-lg   border-gray-200 p-2 space-x-1 ">
-                <a
-                  href="https://monecoledigitale.com/wp-content/uploads/2024/01/DEVELOPPEUR-WEB-ET-WEB-MOBILE%E2%80%93-RNCP-37674BC01.pdf"
-                  className="flex items-center"
-                >
+              <div onClick={()=> alert("Fonctionnalite non disponible ")}  className="flex items-center cursor-pointer border-2 rounded-lg  bg-black/50 border-gray-200 p-2 space-x-1  ">
                   <BiLogoFacebook className="text-xl font-bold" />
                   <p className="font-semi-bold text-nowrap">
                     Sign in with Facebook
                   </p>
-                </a>
               </div>
               {/* moteur de recherche */}
-              <div className="flex items-center border-2 rounded-lg   border-gray-200 p-2  ">
-                  className="flex items-center gap-2"
-                  <Link to='/home'>
+              <div className="flex items-center border-2 rounded-lg gap-1 bg-violet-500 text-white font-semibold   border-gray-200 p-2 cursor-pointer ">
+                  
                   <FaGoogle className="text-xl font-bold" />
-                  <p className="font-semi-bold text-nowrap">
-                    Sign in with Google
-                  </p>
-                  </Link>
-                
+                  <div className="flex items-center gap-2  ">
+                  <SignInButton mode="modal" signUpForceRedirectUrl='/admin' />
+                  <p>With Google</p>
+                  </div>
               </div>
             </div>
             <div className="mt-10 flex items-center justify-center mb-10">
@@ -67,22 +62,23 @@ const Login = () => {
                       <input type="checkbox" className="" />
                       <label className="text-gray-500">Remember me</label>
                     </div>
-                    <div>
-                      <p className="text-violet-800  text-nowrap">
-                        <a
-                          href="https://monecoledigitale.com/wp-content/uploads/2024/01/DEVELOPPEUR-WEB-ET-WEB-MOBILE%E2%80%93-RNCP-37674BC01.pdf"
-                          className="hover:underline"
-                        >
+                    <div onClick={()=> alert("Fonctionnalite non disponible")}>
+                      <p className="text-violet-800  text-nowrap bg-black/75 p-2 rounded cursor-pointer">
                           Forgot Password?{" "}
-                        </a>
                       </p>
                     </div>
                   </div>
                   {/* different sign */}
-                  <div className="flex flex-col gap-3 items-start ">
+                  <div className="flex  gap-3 items-center justify-between  ">
                     <Link to="/employee/dashboard">
-                      <p className="text-white bg-violet-700 p-2 rounded-lg font-semibold">
+                      <p className="text-white bg-violet-700 p-2 rounded-lg font-semibold hover:scale-105 transition-all duration-500 hover:bg-gray-900">
                         Sign In
+                      </p>
+                    </Link> 
+                    <p className="font-poppins font-bold justify-between">Or</p>
+                    <Link to="/Register">
+                      <p className="text-white bg-violet-700 p-2 rounded-lg font-semibold hover:scale-105 transition-all duration-500 hover:bg-gray-900">
+                        Register
                       </p>
                     </Link>
                   </div>

@@ -1,41 +1,121 @@
-import { createBrowserRouter, createRoutesFromElements,RouterProvider, Route} from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { SignedIn, useAuth } from "@clerk/clerk-react";
+
+// Pages
 import Login from "./components/Login";
 import Acceuil from "./components/Acceuil";
 import DashboardC from "./components/DashboardC";
 import Profile from "./components/Profile";
-import Dashboard from "./components/Dashboard";
 import Notification from "./components/Notification";
 import Leaves from "./components/Leaves";
 import Reportproblem from "./components/Reportproblem";
 import Register from "./components/Register";
-import Commande from "./components/Commande";
-// import Achat from "./components/Achat";
-// import Connect from "./components/Connect";
-import Home from "./components/Home";
-const router = createBrowserRouter( 
+import Presence from "./components/Presence";
+import Erreur from "./components/Erreur";
+
+const ProtectedRoute = ({ children }) => {
+  const { isLoaded, isSignedIn } = useAuth();
+
+  // Attendre que l'état d'authentification soit chargé
+  if (!isLoaded) {
+    return <div>Chargement...</div>; // Placeholder pendant le chargement
+  }
+
+  // Rediriger si l'utilisateur n'est pas connecté
+  if (!isSignedIn) {
+    return <Navigate to="/login" />;
+  }
+
+  // Si l'utilisateur est connecté, afficher les enfants
+  return (
+    <SignedIn>
+      {children}
+    </SignedIn>
+  );
+};
+
+// Routes
+const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-    <Route path="/Home" element={<Home/>}/>
-    <Route path="/Dashboard" element={<DashboardC/>}/>
-    <Route path="/Login" element={<Login />}/>
-          <Route path="/Acceuil" element={<Acceuil />}/>
-          <Route path="/employee/dashboard" element={<DashboardC />}/>
-          <Route path="/userdetail" element={<Profile/>}/>
-          <Route path="/employee" element={<Dashboard />}/>
-          <Route path="/Notifications" element={<Notification/>}/>
-          <Route path="/Leaves" element={<Leaves/>}></Route>
-          <Route path="/Reportproblem" element={<Reportproblem />}/>
-          <Route path="/Register" element={<Register/>}/>
-          <Route path="/Dashboard" element={<Dashboard/>}/>
-          <Route path="/Commande" element={<Commande/>}/>
+      {/* Routes publiques */}
+      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+
+      {/* Routes accessibles uniquement aux utilisateurs connectés */}
+      <Route
+        path="/acceuil"
+        element={
+          <ProtectedRoute>
+            <Acceuil />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/presence"
+        element={
+          <ProtectedRoute>
+            <Presence />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <DashboardC />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/userdetail"
+        element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/notifications"
+        element={
+          <ProtectedRoute>
+            <Notification />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/leaves"
+        element={
+          <ProtectedRoute>
+            <Leaves />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/reportproblem"
+        element={
+          <ProtectedRoute>
+            <Reportproblem />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+      path="*"
+      element={<Erreur/>}
+      />
     </>
-  ))
+  )
+);
+
 function App() {
-  return (
-    <>
-    <RouterProvider router={router}/>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
