@@ -16,6 +16,7 @@ import { FiFilter } from "react-icons/fi";
 import { FaSort } from "react-icons/fa";
 import { TbClockHour4 } from "react-icons/tb";
 import { TbEdit } from "react-icons/tb";
+import { UserButton } from "@clerk/clerk-react";
 
 const Leaves = () => {
   const [Tab, setTab]=useState(3);
@@ -39,7 +40,7 @@ const toggle = ()=>{
 
   return ( <>
   
-  <nav className={`fixed top-0 z-50 w-full bg-[#7e22ce] border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700`}>
+   <nav   className={`fixed top-0 z-50 w-full bg-[#7e22ce] border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700`}>
   <div className="px-3 py-3 lg:px-5 lg:pl-3 ">
     <div className="flex items-center justify-between">
       {/* navbar logo */}
@@ -73,18 +74,15 @@ const toggle = ()=>{
             </Link>
             <MdNotifications className="flex-shrink-0 max-sm:w-5 max-sm:h-5 w-7 h-7 text-white cursor-pointer dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
             <MdDarkMode className="text-2xl text-white"/>
-            <button
+            <div
              
-              type="button"
+             
               className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               onClick={toggle}
             >
-              <img
-                className=" md:w-8 md:h-8 max-lg:w-8 max-lg:h-8  max-sm:w-8 max-sm:h-8 rounded-full cursor-pointer"
-                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&amp;w=1000&amp;q=80" alt="Theodore711"
-                
-              />
-            </button>
+              <UserButton/>
+              
+            </div>
           </div>
           {/* user profil */}
                   <div

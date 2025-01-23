@@ -23,7 +23,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { SignedOut, UserButton } from "@clerk/clerk-react";
+import {  UserButton } from "@clerk/clerk-react";
 
 ChartJS.register(
   CategoryScale,
@@ -183,7 +183,7 @@ const formatdate = today.toLocaleDateString("en-Us",{
               onClick={toggle}
             >
               <UserButton/>
-              <SignedOut />
+              
             </div>
           </div>
           {/* user profil */}

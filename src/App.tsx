@@ -6,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { SignedIn, useAuth } from "@clerk/clerk-react";
+import React from "react";
 
 // Pages
 import Login from "./components/Login";
@@ -19,7 +20,11 @@ import Register from "./components/Register";
 import Presence from "./components/Presence";
 import Erreur from "./components/Erreur";
 
-const ProtectedRoute = ({ children }) => {
+type ProtectedRouteProps = {
+  children: React.ReactNode; // Typage explicite pour children
+};
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isLoaded, isSignedIn } = useAuth();
 
   // Attendre que l'état d'authentification soit chargé
@@ -40,13 +45,26 @@ const ProtectedRoute = ({ children }) => {
   );
 };
 
+// Login Component Wrapper for Redirection
+const LoginRedirect = () => {
+  const { isSignedIn } = useAuth();
+
+  // Si l'utilisateur est connecté, redirigez vers /presence
+  if (isSignedIn) {
+    return <Navigate to="/presence" />;
+  }
+
+  // Sinon, affichez le composant Login
+  return <Login />;
+};
+
 // Routes
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       {/* Routes publiques */}
       <Route path="/" element={<Navigate to="/login" />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<LoginRedirect />} />
       <Route path="/register" element={<Register />} />
 
       {/* Routes accessibles uniquement aux utilisateurs connectés */}
@@ -106,10 +124,7 @@ const router = createBrowserRouter(
           </ProtectedRoute>
         }
       />
-      <Route
-      path="*"
-      element={<Erreur/>}
-      />
+      <Route path="*" element={<Erreur />} />
     </>
   )
 );

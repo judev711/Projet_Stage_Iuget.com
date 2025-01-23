@@ -5,7 +5,7 @@ import { PiSignOut } from "react-icons/pi"
 import { Link } from "react-router-dom"
 
 const Presence = () => {
-   const [revel, setrevel]= useState(null)
+   const [revel, setrevel]= useState(false)
    const clickRevel = ()=>{
     setrevel(!revel)
    }
