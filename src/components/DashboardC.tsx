@@ -13,6 +13,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { LuCoffee } from "react-icons/lu";
 import { MdAccessTime } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
+import {  useUser } from "@clerk/clerk-react";
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -35,6 +36,7 @@ ChartJS.register(
 );
 
 const DashboardC = () => {
+const { user } = useUser()
   const data = {
     labels: ['junior', 'Bob', 'Charlie', 'Diana', 'Eve'],
     datasets: [
@@ -110,7 +112,7 @@ const toggle = ()=>{
  setTab(Tab)
   }
   //
-   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -306,7 +308,7 @@ const formatdate = today.toLocaleDateString("en-Us",{
             <div className="flex justify-between items-center p-3 mb">
                <div className="flex items-center">
                      <div className="p-1 bg-blue-500 rounded-lg w-1 h-[30px] "></div>
-                     <p className="mx-2 text-lg font-semibold text-gray-900">Good Day , Theo</p>
+                     <p className="mx-2 text-lg font-semibold text-gray-900">Good Day , {user?.firstName}</p>
                </div>
                <div className="bg-green-500 rounded-lg p-3 flex items-center  max-sm:hidden">
                   <MdOutlineDateRange className="text-white font-semibold"/>

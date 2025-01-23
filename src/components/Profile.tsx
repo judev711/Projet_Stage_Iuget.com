@@ -20,9 +20,13 @@ import { FiFilter } from "react-icons/fi";
 import { FaSort } from "react-icons/fa";
 import { TbClockHour4 } from "react-icons/tb";
 import { FaStar } from "react-icons/fa6";
-import { UserButton } from "@clerk/clerk-react";
+import { UserButton, useUser } from "@clerk/clerk-react";
+
+
 
 const Profile = () => {
+     const { user } = useUser();
+     console.log("infossss:",user);
   const [Tab, setTab]=useState(2);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const toggleSidebar = () => {
@@ -210,9 +214,17 @@ const toggle = ()=>{
             </div>
             <div className="flex flex-row max-sm:flex-col max-sm:gap-2 ">
                <div className=" flex justify-center items-center">
-                  <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&amp;w=1000&amp;q=80" alt="Bonnie image"/>
+                  <div className="w-24 h-24 mb-3 rounded-full shadow-lg" >
+                     <img
+                       src={user?.imageUrl}
+                        alt="Avatar utilisateur"
+                        className="rounded-full"  
+                     />
+                  </div>
                </div>
-               <div className="flex  items-center max-sm:justify-center text-xl md:text-2xl mb-2 px-6 py-3 max-sm:px-0 max-sm:py-0">John Doe</div>
+               <div className="flex  items-center max-sm:justify-center text-xl md:text-2xl mb-2 px-6 py-3 max-sm:px-0 max-sm:py-0">
+               {user?.fullName}
+               </div>
             </div>
                {/* table 1 */}
                   <div className="relative overflow-x-auto">

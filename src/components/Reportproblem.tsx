@@ -132,7 +132,7 @@ const [isOpen, setIsOpen] = useState(false);
       <ul className={`space-y-3 font-medium     ` }>
         {/* icon Dashboard */}
          <li className="">
-          <Link to='/employee/dashboard'>
+          <Link to='/admin'>
             <a href="#" className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white  hover:bg-gray-100 dark:hover:bg-gray-700 group ">
                <BiHome className={`flex-shrink-0 w-5 h-5 ${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-500'}      dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white   `}/>
                <span  onClick={()=>HandlesTab(1)} className={`${Tab ===1 ? 'text-blue-600 font-bold':'text-gray-900'} ms-[1.29rem]   `} > Dashboard</span>

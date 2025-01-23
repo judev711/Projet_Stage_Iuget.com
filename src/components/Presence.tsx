@@ -28,17 +28,13 @@ console.log("profile", user)
       <div  className="flex items-center justify-start rtl:justify-end ">
         
         {/* burger */}
-        <button  onClick={toggleSidebar}   type="button" className="inline-flex items-center p-2 text-sm text-white  font-bold  dark:text-gray-400 dark:hover:bg-gray-700 " >
+        <button  onClick={toggleSidebar}   type="button" className="inline-flex text-xl items-center p-2  text-white  font-bold  dark:text-gray-400 dark:hover:bg-gray-700 " >
                <p>eBuyClock</p>
             {/* burger */}
          </button>
-         
-         
-        <a href="" className="flex ms-2 md:me-24  gap-2">
-          <span className="self-center text-xl text-white font-extrabold sm:text-2xl whitespace-nowrap text dark:text-white">
+          <span className="inline-flex text-xl items-center p-2  text-white  font-bold  dark:text-gray-400 dark:hover:bg-gray-700">
             Theo
-            </span>
-        </a>
+          </span>
         {/* logo */}
       </div>
       {/* end of navbar logo */}
@@ -141,7 +137,7 @@ console.log("profile", user)
               <label>Description</label>
               <textarea required/>
           </div>
-          <button type="submit" className="p-3 bg-violet-800 text-white font-semibold rounded">Submit</button>
+          <Link to='/admin'><button type="submit" className="p-3 bg-violet-800 text-white font-semibold rounded">Submit</button></Link>
         </form>
         <p className="text-green-600 font-bold mt-5">Please verify your presence within the company premises !</p>
 
