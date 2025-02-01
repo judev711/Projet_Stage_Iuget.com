@@ -1,10 +1,15 @@
-import { UserButton, useClerk } from "@clerk/clerk-react"
-import { useState } from "react"
+import { useAuth, UserButton } from "@clerk/clerk-react"
+import { useEffect, useState } from "react"
 import { MdDarkMode, MdNotifications } from "react-icons/md"
-import { PiSignOut } from "react-icons/pi"
+import { FcHome } from "react-icons/fc";
 import { Link } from "react-router-dom"
+import {  useUser } from "@clerk/clerk-react";
+import Loader from "./Loader"
+
+
 
 const Presence = () => {
+  const { user } = useUser()
    const [revel, setrevel]= useState(false)
    const clickRevel = ()=>{
     setrevel(!revel)
@@ -17,8 +22,25 @@ const Presence = () => {
 const toggle = ()=>{
    setopen(!open)
 }
-const user = useClerk()
-console.log("profile", user)
+ const userId = user?.id;
+ console.log('utilisateur', userId)
+ const { isLoaded } = useAuth(); // Vérifie si l'authentification est prête
+  const [isLoading, setIsLoading] = useState(true); // État pour suivre le chargement de la page
+
+  useEffect(() => {
+    // Simule un chargement de la page
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // ⏳ Temps simulé pour le chargement
+
+    return () => clearTimeout(timer); // Nettoie le timer
+  }, []);
+
+  // Affiche le Loader tant que la page ou useAuth charge
+  if (isLoading || !isLoaded) {
+    return <Loader />;
+  };
+
   return (
     <div className="">
         <nav   className={`fixed top-0 z-50 w-full bg-[#7e22ce] border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700`}>
@@ -43,11 +65,11 @@ console.log("profile", user)
         <div className="flex items-center ms-3">
           {/* user profile */}
           <div  className="flex items-center gap-5 max-md:gap-2">
-            <Link to="/Login">
+            <Link to="/">
             <div className="group">
               <div className="flex items-center gap-2 group-hover:bg-white border  p-2 rounded-lg cursor-pointer">
-                <PiSignOut className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md: group-hover:text-black  text-white dark:text-gray-400  dark:group-hover:text-white" />
-                <p className="text-white text-sm group-hover:text-black text-nowrap">Sign Out</p>
+                <FcHome className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md: group-hover:text-black  text-white dark:text-gray-400  dark:group-hover:text-white" />
+                <p className="text-white text-sm group-hover:text-black text-nowrap">Acceuil</p>
               </div>
             </div>  
             </Link>
@@ -121,7 +143,7 @@ console.log("profile", user)
         }
       </div>
       <div className="w-full">
-        <h1 className="text-start font-semibold">hello Theo, please check your presence !</h1> 
+        <h1 className="text-start font-semibold">hello {user?.firstName}, please check your presence !</h1> 
         <form className=" mt-7" action="" method="">
           <div className="grid grid-cols-2 max-md:grid-cols-1 gap-4 w-full">
             <div className="mb-3 flex flex-col w-full">

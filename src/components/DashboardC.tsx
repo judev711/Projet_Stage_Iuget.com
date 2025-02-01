@@ -168,11 +168,11 @@ const formatdate = today.toLocaleDateString("en-Us",{
         <div className="flex items-center ms-3">
           {/* user profile */}
           <div  className="flex items-center gap-5 max-md:gap-2">
-            <Link to="/Login">
+            <Link to="/presence">
             <div className="group">
               <div className="flex items-center gap-2 group-hover:bg-white border  p-2 rounded-lg cursor-pointer">
                 <PiSignOut className="flex-shrink-0 max-sm:w-5 max-sm:h-5 md: group-hover:text-black  text-white dark:text-gray-400  dark:group-hover:text-white" />
-                <p className="text-white text-sm group-hover:text-black text-nowrap">Sign Out</p>
+                <p className="text-white text-sm group-hover:text-black text-nowrap">Aurevoir</p>
               </div>
             </div>  
             </Link>

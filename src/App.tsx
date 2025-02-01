@@ -5,8 +5,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { SignedIn, useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 import React from "react";
+import Loader from "./components/Loader";
 
 // Pages
 import Login from "./components/Login";
@@ -21,61 +22,31 @@ import Presence from "./components/Presence";
 import Erreur from "./components/Erreur";
 
 type ProtectedRouteProps = {
-  children: React.ReactNode; // Typage explicite pour children
+  children: React.ReactNode;
 };
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isLoaded, isSignedIn } = useAuth();
 
-  // Attendre que l'état d'authentification soit chargé
   if (!isLoaded) {
-    return <div>Chargement...</div>; // Placeholder pendant le chargement
+    return <Loader />;
   }
 
-  // Rediriger si l'utilisateur n'est pas connecté
   if (!isSignedIn) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" replace />; // ✅ Rediriger vers accueil si non connecté
   }
 
-  // Si l'utilisateur est connecté, afficher les enfants
-  return (
-    <SignedIn>
-      {children}
-    </SignedIn>
-  );
-};
-
-// Login Component Wrapper for Redirection
-const LoginRedirect = () => {
-  const { isSignedIn } = useAuth();
-
-  // Si l'utilisateur est connecté, redirigez vers /presence
-  if (isSignedIn) {
-    return <Navigate to="/presence" />;
-  }
-
-  // Sinon, affichez le composant Login
-  return <Login />;
+  return <>{children}</>;
 };
 
 // Routes
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      {/* Routes publiques */}
-      <Route path="/" element={<Navigate to="/login" />} />
-      <Route path="/login" element={<LoginRedirect />} />
+      <Route path="/" element={<Acceuil />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
 
-      {/* Routes accessibles uniquement aux utilisateurs connectés */}
-      <Route
-        path="/acceuil"
-        element={
-          <ProtectedRoute>
-            <Acceuil />
-          </ProtectedRoute>
-        }
-      />
       <Route
         path="/presence"
         element={

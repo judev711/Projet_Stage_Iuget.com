@@ -1,11 +1,14 @@
 // import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from 'react-icons/fa'; // Import from react-icons/fa
 import { FiUser } from "react-icons/fi";;
 import { FaChevronDown } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
+import { useAuth } from "@clerk/clerk-react";
+import Loader from "./Loader";
 
 // import { Link } from "react-router-dom";
+ 
 const Acceuil = () => {
   const [openBox, SetopenBox] = useState(false);
   const togglebox = ()=>{
@@ -26,6 +29,23 @@ const Acceuil = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const { isLoaded } = useAuth(); // Vérifie si l'authentification est prête
+  const [isLoading, setIsLoading] = useState(true); // État pour suivre le chargement de la page
+
+  useEffect(() => {
+    // Simule un chargement de la page
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // ⏳ Temps simulé pour le chargement
+
+    return () => clearTimeout(timer); // Nettoie le timer
+  }, []);
+
+  // Affiche le Loader tant que la page ou useAuth charge
+  if (isLoading || !isLoaded) {
+    return <Loader />;
+  };
 
   return (
     <div className=" ">
@@ -94,6 +114,9 @@ const Acceuil = () => {
       </div>
     </nav>
     <div className="bg-[url('https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0OTg2fDB8MXxjb2xsZWN0aW9ufDF8NDU3ODM0fHx8fHwyfHwxNzM2Njk3OTM3fA&ixlib=rb-4.0.3&q=80&w=400')] bg-cover h-[700px] flex items-center justify-center  brightness-50 max-sm:h-[400px] ">
+    
+        
+      
     <div className="flex justify-center items-center p-3">
       <p className="text-white xl:text-[3rem] max-sm:text-[2rem] text-center font-extrabold text-wrap">Suivez Vos Heures De Travail En Temps Réel Avec e@BuyClock - Votre Partenaire De Confiance</p>
     </div>
@@ -103,7 +126,9 @@ const Acceuil = () => {
       <p className=" text-start text-[1rem]">e@BuyClock  est une application web, spécialisée dans la gestion de suivi de presence des employés. Nous vous accompagnons pour atteindre vos objectifs et réaliser votre potentiel.</p>
     </div>
     <div className="bg-slate-300 text-center ">
+      
       <div className="p-10">
+       
         <h1 className="text-3xl   font-extrabold text-violet-600 ">Prestation De service</h1>
       </div>
       <div className="grid grid-cols-3 gap-4 max-md:grid-cols-1 justify-center p-4">
@@ -162,7 +187,7 @@ const Acceuil = () => {
               <FaChevronDown className="text-white"/>
             </div>
           </div>
-          <div className={`bg-white w-full border overflow-hidden duration-500 ${openIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0' }`}>
+          <div className={`bg-white w-full border-2 border-gray-800 overflow-hidden duration-500 ${openIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0' }`}>
             {openIndex === index && (
             <p className={`text-gray-600 mt-10 mb-10`}>{faq.answer}</p>
           )}
