@@ -19,13 +19,11 @@ const Register = () => {
   });
   
   const [loading, setLoading] = useState(false); // Indicateur de chargement
-  const [message, setMessage] = useState(""); // Message de retour de l'utilisateur
 
   // Fonction de soumission du formulaire
   const handlesSignup = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setLoading(true);
-    setMessage("");
 
     // Validation des champs avant l'envoi
     if (
@@ -38,7 +36,7 @@ const Register = () => {
       !signupData.email ||
       !signupData.password
     ) {
-      setMessage("Tous les champs sont requis.");
+      console.log("Tous les champs sont requis.");
       setLoading(false);
       return;
     }
@@ -46,22 +44,22 @@ const Register = () => {
     // Validation du format de l'email (simple)
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(signupData.email)) {
-      setMessage("L'email est invalide.");
+      console.log("L'email est invalide.");
       setLoading(false);
       return;
     }
 
     try {
       await axios.post("http://localhost:5000/Register/api/signup", signupData);
-      setMessage("Inscription réussie. Vous pouvez maintenant vous connecter !");
+      console.log("Inscription réussie. Vous pouvez maintenant vous connecter !");
     } catch (error) {
       if (error instanceof AxiosError) {
-        setMessage(
+        console.log(
           "Erreur lors de l'inscription : " +
             (error.response?.data?.message || "Une erreur est survenue.")
         );
       } else {
-        setMessage("Une erreur inconnue est survenue.");
+        console.log("Une erreur inconnue est survenue.");
       }
     } finally {
       setLoading(false);
