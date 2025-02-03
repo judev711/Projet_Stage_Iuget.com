@@ -1,5 +1,5 @@
 // import React from 'react'
-import {  SetStateAction, useState } from "react"
+import {  SetStateAction, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { BiHome } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
@@ -21,12 +21,14 @@ import { FaSort } from "react-icons/fa";
 import { TbClockHour4 } from "react-icons/tb";
 import { FaStar } from "react-icons/fa6";
 import { UserButton, useUser } from "@clerk/clerk-react";
-
-
+import axios from "axios";
 
 const Profile = () => {
-     const { user } = useUser();
-     console.log("infossss:",user);
+   useEffect(()=>{
+      axios.get("http://localhost:5000/Profile/api/user")
+
+   },[]);
+  
   const [Tab, setTab]=useState(2);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const toggleSidebar = () => {
@@ -37,12 +39,23 @@ const toggle = ()=>{
    setopen(!open)
 }
 
-
 //   const [Open, SetOpen]= useState(true)
   const HandlesTab = (Tab: SetStateAction<number>)=>{
  setTab(Tab)
   }
-
+  //defintion des donnees depuis clerk
+  const { user } = useUser();
+  if (!user) {
+    return <p>Chargement...</p>; // Évite l'accès à un objet null
+  }
+  interface PublicMetadata {
+  emailAddresses?:string;
+  role?: string;
+  sexe?: string;
+  dateDeNaissance?: string;
+  phonenumber?: number; // Ajout du numéro de téléphone
+}
+const metadata = user.publicMetadata as PublicMetadata;
   return ( <>
   
   <nav   className={`fixed top-0 z-50 w-full bg-[#7e22ce] border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700`}>
@@ -237,10 +250,10 @@ const toggle = ()=>{
                               <td scope="col" className="px-6 py-3">Email Address</td></tr>
                         </thead>
                         <tbody>
-                           <tr className="bg-transparent text-textColor">
-                              <th className="px-6 py-4 font-md">Web Dev</th>
-                              <th className="px-6 py-4 font-md">673 330 148</th>
-                              <th className="px-6 py-4 font-md">theo@gmail.com</th>
+                              <tr  className="bg-transparent text-textColor">
+                              <th className="px-6 py-4 font-md">{metadata.role ?? "Non spécifié"}</th>
+                              <th className="px-6 py-4 font-md">{metadata.phonenumber ?? "Non spécifiée"}</th>
+                              <th className="px-6 py-4 font-md">{user.primaryEmailAddress?.emailAddress ?? "Non spécifié"}</th>
                               </tr>
                         </tbody>
                      </table>
@@ -251,17 +264,20 @@ const toggle = ()=>{
                            <th className="">Informations</th>
                         </thead>
                         <tbody>
-                           <tr className="text-xs  text-gray-500 uppercase bg-transparent">
+                           
+                             
+                              
+                              <tr  className="text-xs  text-gray-500 uppercas bg-transparent">
                               <th className="px-6 py-4 font-md">Role</th>
-                              <td className="text-black font-bold text-sm">Web Dev</td>
+                              <td className="text-black font-bold text-sm">{metadata.role ?? "Non spécifié"}</td>
                            </tr>
-                           <tr className="text-xs  text-gray-500 uppercase bg-transparent">
+                           <tr className="text-xs  text-gray-500 uppercas bg-transparent">
                               <th className="px-6 py-4 font-md">PHONE NUMBER</th>
-                              <td className="text-black font-bold text-sm"> 673 330 148</td>
+                              <td className="text-black font-bold text-sm">{metadata.phonenumber ?? "Non spécifiée"}</td>
                            </tr>
                            <tr className="text-xs  text-gray-500  bg-transparent">
                               <th className="px-6 py-4 font-md">EMAIL ADDRESS</th>
-                              <td className="text-black font-bold text-sm">theo@gmail.com</td>
+                              <td className="text-black font-bold text-sm">{user.primaryEmailAddress?.emailAddress ?? "Non spécifié"}</td>
                            </tr>
                         </tbody>
                      </table>

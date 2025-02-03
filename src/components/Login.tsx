@@ -1,9 +1,13 @@
 import { SignIn, useAuth} from "@clerk/clerk-react" 
 import Loader from "./Loader";
 import { useEffect, useState } from "react";
+
 const Login = () => {
   const { isLoaded } = useAuth(); // Vérifie si l'authentification est prête
   const [isLoading, setIsLoading] = useState(true); // État pour suivre le chargement de la page
+
+
+  
 
   useEffect(() => {
     // Simule un chargement de la page

@@ -3,7 +3,7 @@ import { AxiosError } from "axios";
 import { motion } from "framer-motion";
 import { FaRunning } from "react-icons/fa"; // Icône d'un homme qui court
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 
 const Register = () => {
@@ -17,7 +17,7 @@ const Register = () => {
     email: "",
     password: "",
   });
-  
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false); // Indicateur de chargement
 
   // Fonction de soumission du formulaire
@@ -36,7 +36,7 @@ const Register = () => {
       !signupData.email ||
       !signupData.password
     ) {
-      console.log("Tous les champs sont requis.");
+      alert("Tous les champs sont requis.");
       setLoading(false);
       return;
     }
@@ -44,22 +44,25 @@ const Register = () => {
     // Validation du format de l'email (simple)
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(signupData.email)) {
-      console.log("L'email est invalide.");
+      alert("L'email est invalide.");
       setLoading(false);
       return;
     }
 
     try {
-      await axios.post("http://localhost:5000/Register/api/signup", signupData);
+      const response = await axios.post("http://localhost:5000/Register/api/signup", signupData);
       console.log("Inscription réussie. Vous pouvez maintenant vous connecter !");
+      if(response.data.message == 'Utilisateur créé avec succès.'){
+        navigate('/login')
+      }
     } catch (error) {
       if (error instanceof AxiosError) {
-        console.log(
+        alert(
           "Erreur lors de l'inscription : " +
             (error.response?.data?.message || "Une erreur est survenue.")
         );
       } else {
-        console.log("Une erreur inconnue est survenue.");
+        alert("Une erreur inconnue est survenue.");
       }
     } finally {
       setLoading(false);
