@@ -5,6 +5,7 @@ import { FcHome } from "react-icons/fc";
 import { Link } from "react-router-dom"
 import {  useUser } from "@clerk/clerk-react";
 import Loader from "./Loader"
+// import { SignIn } from "@clerk/clerk-react";
 
 
 
@@ -48,7 +49,6 @@ const toggle = ()=>{
     <div className="flex items-center justify-between ">
       {/* navbar logo */}
       <div  className="flex items-center justify-start rtl:justify-end ">
-        
         {/* burger */}
         <button  onClick={toggleSidebar}   type="button" className="inline-flex text-xl items-center p-2  text-white  font-bold  dark:text-gray-400 dark:hover:bg-gray-700 " >
                <p>eBuyClock</p>

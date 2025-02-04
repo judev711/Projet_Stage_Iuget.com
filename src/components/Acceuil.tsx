@@ -77,11 +77,13 @@ const Acceuil = () => {
             isOpen ? 'flex flex-col' : 'hidden'
           }`}
          >
+          <Link to="/admin">
           <li>
             <a href="#home" className="hover:text-gray-400 block py-2 md:py-0">
               Welcome
             </a>
           </li>
+          </Link>
           <li>
             <a href="#about" className="hover:text-gray-400 block py-2 md:py-0">
               About Us

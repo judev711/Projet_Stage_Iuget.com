@@ -13,7 +13,7 @@ const Login = () => {
     // Simule un chargement de la page
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000); // ⏳ Temps simulé pour le chargement
+    }, 0.2); // ⏳ Temps simulé pour le chargement
 
     return () => clearTimeout(timer); // Nettoie le timer
   }, []);
@@ -29,7 +29,8 @@ const Login = () => {
             <div className="flex  items-center justify-center ">
               
                 <SignIn
-                  signUpUrl="/register"
+                afterSignInUrl="/presence"
+                  signUpUrl="/Register"
                   appearance={{
                     elements: {
                       rootBox: "flex flex-col items-center w-full ", // Style global de la carte
@@ -41,6 +42,7 @@ const Login = () => {
                     },
                   }}
                 />
+                
                 </div>
                   <div className=" w-full max-md:hidden -mt-[4rem] flex items-center p-4 border-black border-1">
                         <div className="flex justify-center items-center  ">

@@ -22,6 +22,7 @@ import { TbClockHour4 } from "react-icons/tb";
 import { FaStar } from "react-icons/fa6";
 import { UserButton, useUser } from "@clerk/clerk-react";
 import axios from "axios";
+import { jsPDF } from "jspdf";
 
 const Profile = () => {
    useEffect(()=>{
@@ -52,10 +53,93 @@ const toggle = ()=>{
   emailAddresses?:string;
   role?: string;
   sexe?: string;
-  dateDeNaissance?: string;
+  dateOfBirth?: string;
   phonenumber?: number; // Ajout du numéro de téléphone
 }
 const metadata = user.publicMetadata as PublicMetadata;
+ const handleDownload = async () => {
+    if (!user) return;
+
+    const doc = new jsPDF();
+
+    // Ajouter un titre stylisé
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.setTextColor(0, 102, 204); // Bleu foncé
+    doc.text("Informations de l'utilisateur", 105, 20, { align: "center" });
+
+    // Ajouter une ligne bleue
+    doc.setDrawColor(0, 102, 204);
+    doc.line(10, 25, 200, 25); // x1, y1, x2, y2
+
+    // Ajouter l'image de profil après la ligne (centrée)
+    const imageUrl = user.imageUrl;
+    let yPosition = 35; // Position Y après la ligne
+
+    if (imageUrl) {
+      try {
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
+        const reader = new FileReader();
+        
+        reader.readAsDataURL(blob);
+        reader.onloadend = function () {
+          const base64data = reader.result as string;
+
+          const imgWidth = 50; // Largeur de l'image
+          const imgHeight = 50; // Hauteur de l'image
+          const centerX = (210 - imgWidth) / 2; // Centrage horizontal (A4 = 210mm)
+
+          doc.addImage(base64data, "PNG", centerX, yPosition, imgWidth, imgHeight);
+          yPosition += imgHeight + 10; // Décalage pour les textes suivants
+
+          // Ajouter les informations utilisateur après l'image
+          doc.setFontSize(12);
+          doc.setTextColor(0, 102, 204);
+          doc.text(`Nom: ${user.firstName} ${user.lastName}`, 10, yPosition);
+          //email
+          doc.setFontSize(12);
+          doc.setTextColor(255, 0, 0);
+          doc.text(`Email: ${user.primaryEmailAddress?.emailAddress || "N/A"}`, 10, yPosition + 10);
+          doc.setDrawColor(0, 102, 204);
+          doc.line(10, 25, 200, 25); // x1, y1, x2, y2
+
+          doc.setTextColor(255, 0, 0); // Rouge
+          doc.text(`Rôle: ${user.publicMetadata.role || "Non défini"}`, 10, yPosition + 20);
+
+          doc.setTextColor(0, 128, 0); // Vert
+          doc.text(`Genre: ${user.publicMetadata.gender || "Non défini"}`, 10, yPosition + 30);
+
+          doc.setTextColor(128, 0, 128); // Violet
+          doc.text(`Date de naissance: ${user.publicMetadata.dob || "Non défini"}`, 10, yPosition + 40);
+
+          // Télécharger le fichier après ajout des données
+          doc.save("user_info.pdf");
+        };
+      } catch (error) {
+        console.error("Erreur lors du chargement de l'image:", error);
+        doc.save("user_info.pdf"); // Sauvegarde sans image en cas d'erreur
+      }
+    } else {
+      // Ajouter les informations utilisateur sans image
+      yPosition += 10;
+      doc.setFontSize(12);
+      doc.setTextColor(0, 0, 0);
+      doc.text(`Nom: ${user.firstName} ${user.lastName}`, 10, yPosition);
+      doc.text(`Email: ${user.primaryEmailAddress?.emailAddress || "N/A"}`, 10, yPosition + 10);
+      
+      doc.setTextColor(255, 0, 0);
+      doc.text(`Rôle: ${user.publicMetadata.role || "Non défini"}`, 10, yPosition + 20);
+
+      doc.setTextColor(0, 128, 0);
+      doc.text(`Genre: ${user.publicMetadata.gender || "Non défini"}`, 10, yPosition + 30);
+
+      doc.setTextColor(128, 0, 128);
+      doc.text(`Date de naissance: ${user.publicMetadata.dob || "Non défini"}`, 10, yPosition + 40);
+
+      doc.save("user_info.pdf");
+    }
+  };
   return ( <>
   
   <nav   className={`fixed top-0 z-50 w-full bg-[#7e22ce] border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700`}>
@@ -103,43 +187,7 @@ const metadata = user.publicMetadata as PublicMetadata;
             </div>
           </div>
           {/* user profil */}
-                  <div
                   
-                    className={`z-50 absolute right-0 mt-52 mx-2  py-2 w-54 bg-white rounded-md shadow-lg dark:bg-gray-700 ${
-                      open ? 'block' : 'hidden'
-                    }`}
-                  >
-                    <ul className="divide-y divide-gray-100 dark:divide-gray-600">
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          <p>Theo@711</p>
-                          <p>theodore@gmail.com</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:text-green-600 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                        Profile
-                        </a>
-                      </li>
-                    
-                      <li>
-                      <Link to="/Login">
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:text-red-600 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Sign out
-                        </a>
-                      </Link>
-                      </li>
-                    </ul>
-                  </div>
           {/* **************** */}
         </div>
       </div>
@@ -220,7 +268,7 @@ const metadata = user.publicMetadata as PublicMetadata;
                   <div className="bg-violet-700 p-1 rounded-lg w-2 h-[30px]"></div>
                   <p className="text-xl  text font-poppins  text-black dark:text-gray-500">Employee Details</p>
                </div>
-               <div className="flex gap-1 items-center text-white p-3 rounded-lg bg-violet-700 cursor-pointer">
+               <div onClick={handleDownload} className="flex gap-1 items-center text-white p-3 rounded-lg bg-violet-700 cursor-pointer">
                   <FaDownload className="" />
                   <p className="text font-poppins dark:text-gray-500">Download Info</p>
                </div>
@@ -264,9 +312,6 @@ const metadata = user.publicMetadata as PublicMetadata;
                            <th className="">Informations</th>
                         </thead>
                         <tbody>
-                           
-                             
-                              
                               <tr  className="text-xs  text-gray-500 uppercas bg-transparent">
                               <th className="px-6 py-4 font-md">Role</th>
                               <td className="text-black font-bold text-sm">{metadata.role ?? "Non spécifié"}</td>

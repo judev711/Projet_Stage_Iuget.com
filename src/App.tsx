@@ -6,8 +6,8 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+
 import Loader from "./components/Loader";
 
 // Pages
@@ -27,43 +27,28 @@ type ProtectedRouteProps = {
 };
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const { isLoaded, isSignedIn } = useAuth();
-  
-  if (!isLoaded) {
-    return <Loader />;
-  }
+ const { isLoaded, isSignedIn } = useAuth();
 
-  if (!isSignedIn) {
-    return <Navigate to="/" replace />;
-  }
+  if (!isLoaded) return <Loader />;
+  if (!isSignedIn) return <Navigate to="/login" replace />; 
 
   return <>{children}</>;
 };
 
 // 🔥 Redirection après connexion (une seule fois)
-const RedirectAfterLogin: React.FC = () => {
-  const { isSignedIn } = useAuth();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isSignedIn) {
-      navigate("/presence", { replace: true });
-    }
-  }, [isSignedIn, navigate]);
-
-  return null;
-};
 
 // Routes
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Acceuil />} />
+      <Route path="/Acceuil" element={<Acceuil />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
 
       {/* Redirection après connexion */}
-      <Route path="/redirect" element={<RedirectAfterLogin />} />
+      
 
       {/* Pages protégées */}
       <Route

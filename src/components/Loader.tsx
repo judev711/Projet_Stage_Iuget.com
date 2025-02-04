@@ -7,7 +7,7 @@ const Loader = () => {
         className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"
         initial={{ rotate: 0 }}
         animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 1 }}
+        transition={{ repeat: Infinity, duration: 0.2 }}
       />
     </div>
   );
